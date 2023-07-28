@@ -22,7 +22,8 @@ public class MarriedSeparateFiling implements TaxRate{
         double result = 0.0;
 
         // Iterates through an array of income brackets and their corresponding tax rates
-        double[] brackets = {0, MARRIED_SEPARATE_BRACKET_10, MARRIED_SEPARATE_BRACKET_12, MARRIED_SEPARATE_BRACKET_22, MARRIED_SEPARATE_BRACKET_24, MARRIED_SEPARATE_BRACKET_32, MARRIED_SEPARATE_BRACKET_35};
+        double[] brackets = {0, MARRIED_SEPARATE_BRACKET_10, MARRIED_SEPARATE_BRACKET_12, MARRIED_SEPARATE_BRACKET_22, 
+                            MARRIED_SEPARATE_BRACKET_24, MARRIED_SEPARATE_BRACKET_32, MARRIED_SEPARATE_BRACKET_35};
         double[] rates = {TAX_RATE_10, TAX_RATE_12, TAX_RATE_22, TAX_RATE_24, TAX_RATE_32, TAX_RATE_35, TAX_RATE_37};
 
         
