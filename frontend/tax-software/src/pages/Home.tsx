@@ -1,4 +1,4 @@
-import { Address, ExtendedNav, Footer, FooterNav, GovBanner, Grid, GridContainer, Header, Logo, MediaBlockBody, Menu, NavDropDownButton, NavMenuButton, Search, SocialLink, SocialLinks, Title } from "@trussworks/react-uswds"
+import { Address, Button, ExtendedNav, Footer, FooterNav, GovBanner, Grid, GridContainer, Header, Logo, MediaBlockBody, Menu, NavDropDownButton, NavMenuButton, Search, SocialLink, SocialLinks, Title } from "@trussworks/react-uswds"
 import { useState } from "react"
 
 export default function Home() {
@@ -11,9 +11,6 @@ export default function Home() {
           setMobileNavOpen((prevOpen) => !prevOpen)
         }
       
-        const handleSearch = (): void => {
-          /* */
-        }
       
         const primaryNavItems = [
 
@@ -29,12 +26,8 @@ export default function Home() {
         ]
       
         const secondaryNavItems = [
-          <a key="secondaryNav_0" href="">
-            Secondary link
-          </a>,
-          <a key="secondaryNav_1" href="">
-            Another secondary link
-          </a>,
+          <Button>Login</Button>,
+          <Button>Create Account</Button>
         ]
       
         const returnToTop = (
@@ -92,14 +85,11 @@ export default function Home() {
 
         return (
           <>
-            <a className="usa-skipnav" href="#main-content">
-              Skip to main content
-            </a>
-            <GovBanner />
+
             <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
             <Header extended={true}>
                 <div className="usa-navbar">
-                <Title>Tax Sensei / Tax Genius</Title>
+                <Title>Tax Genius</Title>
                 <NavMenuButton onClick={onClick} label="Menu" />
             </div>
               <ExtendedNav
@@ -108,28 +98,11 @@ export default function Home() {
                 secondaryItems={secondaryNavItems}
                 onToggleMobileNav={toggleMobileNav}
                 mobileExpanded={mobileNavOpen}>
-                <Search size="small" onSubmit={handleSearch} />
+
               </ExtendedNav>
             </Header>
       
             <main id="main-content">
-              <section className="usa-hero" aria-label="Introduction">
-                <GridContainer>
-                  <div className="usa-hero__callout">
-                    <h1 className="usa-hero__heading">
-                      <span className="usa-hero__heading--alt">Hero callout:</span>
-                      Bring attention to a project priority
-                    </h1>
-                    <p>
-                      Support the callout with some short explanatory text. You don’t
-                      need more than a couple of sentences.
-                    </p>
-                    <a className="usa-button" href="javascript:void(0)">
-                      Call to action
-                    </a>
-                  </div>
-                </GridContainer>
-              </section>
       
               <section className="grid-container usa-section">
                 <Grid row gap>
