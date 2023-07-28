@@ -1,4 +1,4 @@
-import { Address, Button, ExtendedNav, Footer, FooterNav, GovBanner, Grid, GridContainer, Header, Logo, MediaBlockBody, Menu, NavDropDownButton, NavMenuButton, Search, SocialLink, SocialLinks, Title } from "@trussworks/react-uswds"
+import { Address, Button, ExtendedNav, Footer, FooterNav, GovBanner, Grid, GridContainer, Header, Icon, IconList, IconListContent, IconListIcon, IconListItem, IconListTitle, Logo, MediaBlockBody, Menu, NavDropDownButton, NavMenuButton, ProcessList, ProcessListHeading, ProcessListItem, Search, SocialLink, SocialLinks, Title } from "@trussworks/react-uswds"
 import { useState } from "react"
 
 export default function Home() {
@@ -13,21 +13,12 @@ export default function Home() {
       
       
         const primaryNavItems = [
-
-        <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
-            <span>Simple link</span>
-        </a>,
-        <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
-            <span>Simple link</span>
-        </a>,
-        <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
-            <span>Simple link</span>
-        </a>,
+        <a>Get your Tax Estimates with Tax Genius!</a>
         ]
       
         const secondaryNavItems = [
-          <Button>Login</Button>,
-          <Button>Create Account</Button>
+          <Button type="button">Login</Button>,
+          <Button type="button" accentStyle="cool">Create Account</Button>
         ]
       
         const returnToTop = (
@@ -89,7 +80,8 @@ export default function Home() {
             <div className={`usa-overlay ${expanded ? 'is-visible' : ''}`}></div>
             <Header extended={true}>
                 <div className="usa-navbar">
-                <Title>Tax Genius</Title>
+                  <br/>
+                <img src={"./TaxGenius Logo.png"} alt="Tax Genius"/>
                 <NavMenuButton onClick={onClick} label="Menu" />
             </div>
               <ExtendedNav
@@ -103,89 +95,43 @@ export default function Home() {
             </Header>
       
             <main id="main-content">
-      
-              <section className="grid-container usa-section">
-                <Grid row gap>
-                  <Grid tablet={{ col: 4 }}>
-                    <h2 className="font-heading-xl margin-top-0 tablet:margin-bottom-0">
-                      A tagline highlights your approach
-                    </h2>
-                  </Grid>
-                  <Grid tablet={{ col: 8 }} className="usa-prose">
-                    <p>
-                      The tagline should inspire confidence and interest, focusing on
-                      the value that your overall approach offers to your audience.
-                      Use a heading typeface and keep your tagline to just a few
-                      words, and don’t confuse or mystify.
-                    </p>
-                    <p>
-                      Use the right side of the grid to explain the tagline a bit
-                      more. What are your goals? How do you do your work? Write in the
-                      present tense, and stay brief here. People who are interested
-                      can find details on internal pages.
-                    </p>
-                  </Grid>
-                </Grid>
-              </section>
-      
-              <section className="usa-graphic-list usa-section usa-section--dark">
-                <GridContainer>
-                  <Grid row gap className="usa-graphic-list__row">
-                    <Grid tablet={{ col: true }} className="usa-media-block">
-                      <img
-                        className="usa-media-block__img"
-                        src={""}
-                        alt="Alt text"
-                      />
-                      <MediaBlockBody>
-                        <h2 className="usa-graphic-list__heading">
-                          Graphic headings can vary.
-                        </h2>
-                        <p>
-                          Graphic headings can be used a few different ways, depending
-                          on what your landing page is for. Highlight your values,
-                          specific program areas, or results.
-                        </p>
-                      </MediaBlockBody>
-                    </Grid>
-                    <Grid tablet={{ col: true }} className="usa-media-block">
-                      <img
-                        className="usa-media-block__img"
-                        src={""}
-                        alt="Alt text"
-                      />
-                      <MediaBlockBody>
-                        <h2 className="usa-graphic-list__heading">
-                          Stick to 6 or fewer words.
-                        </h2>
-                        <p>
-                          Keep body text to about 30 words. They can be shorter, but
-                          try to be somewhat balanced across all four. It creates a
-                          clean appearance with good spacing.
-                        </p>
-                      </MediaBlockBody>
-                    </Grid>
-                  </Grid>
-                  
 
-                </GridContainer>
-              </section>
-      
-              <section id="test-section-id" className="usa-section">
+            <section>
+              <GridContainer>
+                <img className="usa-media-block__img" src={"./TaxGenius_Landing.png"} alt="Alt text"></img>
+              </GridContainer>
+            </section>
+
+            <div style={{ marginTop: '32px', textAlign: 'center' }}>
+              <GridContainer>
+                <Button type="button" size="big" accentStyle="cool">Get Started Today</Button>
+              </GridContainer>
+            </div>
+
+            <section>
                 <GridContainer>
-                  <h2 className="font-heading-xl margin-y-0">Section heading</h2>
-                  <p className="usa-intro">
-                    Everything up to this point should help people understand your
-                    agency or project: who you are, your goal or mission, and how you
-                    approach it. Use this section to encourage them to act. Describe
-                    why they should get in touch here, and use an active verb on the
-                    button below. “Get in touch,” “Learn more,” and so on.
-                  </p>
-                  <a href="#" className="usa-button usa-button--big">
-                    Call to action
-                  </a>
+                  <GridContainer>
+                      <ProcessList>
+                      <ProcessListItem className="padding-bottom-4">
+                        <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
+                          Login or Create an Account.
+                        </ProcessListHeading>
+                      </ProcessListItem>
+                      <ProcessListItem className="padding-bottom-4">
+                        <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
+                          Fill in your Information.
+                        </ProcessListHeading>
+                      </ProcessListItem>
+                      <ProcessListItem>
+                        <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
+                        Review...and Get your Tax Estimate!
+                        </ProcessListHeading>
+                      </ProcessListItem>
+                    </ProcessList>
+                  </GridContainer>
                 </GridContainer>
               </section>
+
             </main>
       
             <Footer
