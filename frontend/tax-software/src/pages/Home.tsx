@@ -19,7 +19,7 @@ export default function Home() {
       
         const secondaryNavItems = [
           <Link to="signin"><Button type="button">Sign In</Button></Link>,
-          <Button type="button" accentStyle="cool">Create Account</Button>
+          <Link to="createaccount"><Button type="button" accentStyle="cool">Create Account</Button></Link>
         ]
       
         const returnToTop = (
