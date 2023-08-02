@@ -1,5 +1,6 @@
-import { Address, Button, ExtendedNav, Footer, FooterNav, GovBanner, Grid, GridContainer, Header, Icon, IconList, IconListContent, IconListIcon, IconListItem, IconListTitle, Logo, MediaBlockBody, Menu, NavDropDownButton, NavMenuButton, ProcessList, ProcessListHeading, ProcessListItem, Search, SocialLink, SocialLinks, Title } from "@trussworks/react-uswds"
+import { Address, Button, ExtendedNav, Footer, FooterNav, Grid, GridContainer, Header, Logo, NavMenuButton, ProcessList, ProcessListHeading, ProcessListItem, SocialLink, SocialLinks } from "@trussworks/react-uswds"
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 export default function Home() {
 
@@ -17,7 +18,7 @@ export default function Home() {
         ]
       
         const secondaryNavItems = [
-          <Button type="button">Login</Button>,
+          <Link to="signin"><Button type="button">Sign In</Button></Link>,
           <Button type="button" accentStyle="cool">Create Account</Button>
         ]
       
