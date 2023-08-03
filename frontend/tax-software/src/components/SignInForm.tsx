@@ -1,4 +1,4 @@
-import { Button, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds"
+import { Button, Fieldset, Form, GridContainer, Label, Link, TextInput } from "@trussworks/react-uswds"
 import React from "react"
 
 export default function SignInForm() {
@@ -15,27 +15,30 @@ export default function SignInForm() {
     }
 
     return (
-        <div >
-            <GridContainer >
-            <Form onSubmit={handleSubmit} large >
-                <Fieldset legend="Sign In" legendStyle="large">
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "10em"}}>
+            <div style={{ maxWidth: "35em", minHeight: "100vh"}}>
+            <Form onSubmit={handleSubmit} large style={{minWidth: "100vw", minHeight: "100vh"}}>
+                <Fieldset legend="Sign In" legendStyle="large" >
                 <span>
-                    or <a href="javascript:void(0);">create an account</a>
+                    or <Link to="/createaccount">Create Account</Link>
                 </span>
-                <Label htmlFor="username">Username or email address</Label>
+                <Label htmlFor="username">Email address</Label>
                 <TextInput
                     id="username"
                     name="username"
                     type="text"
                     autoCapitalize="off"
                     autoCorrect="off"
+                    style={{maxWidth: "35em"}}
                 />
                 <Label htmlFor="password-sign-in">Password</Label>
                 <TextInput
                     id="password-sign-in"
                     name="password-sign-in"
                     type={showPassword ? 'text' : 'password'}
+                    style={{maxWidth: "35em"}}
                 />
+                <div style={{maxWidth: "35em"}}>
                 <p className="usa-form__note">
                     <a
                     title="Show password"
@@ -48,21 +51,13 @@ export default function SignInForm() {
                     {showPassword ? 'Hide password' : 'Show password'}
                     </a>
                 </p>
+                </div>
         
-                <Button type="submit">Sign in</Button>
-                <p>
-                    <a href="javascript:void(0);" title="Forgot username">
-                    Forgot username?
-                    </a>
-                </p>
-                <p>
-                    <a href="javascript:void(0);" title="Forgot password">
-                    Forgot password?
-                    </a>
-                </p>
+                <Button type="submit">Sign In</Button>
+
                 </Fieldset>
             </Form>
-            </GridContainer>
+            </div>
         </div>
 
     )

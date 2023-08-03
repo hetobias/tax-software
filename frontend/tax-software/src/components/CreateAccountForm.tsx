@@ -23,7 +23,7 @@ export default function CreateAccountForm() {
                 <span>
                     or <Link to="signin">Sign In</Link>
                 </span>
-                <Label htmlFor="username">Username or email address</Label>
+                <Label htmlFor="username">Email address</Label>
                 <TextInput
                     id="username"
                     name="username"
