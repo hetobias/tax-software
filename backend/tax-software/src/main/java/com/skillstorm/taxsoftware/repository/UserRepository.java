@@ -6,5 +6,5 @@ import com.skillstorm.taxsoftware.model.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
-  // Custom query methods (if needed) can be added here.
+  User findByOauthId(String oauthId);
 }

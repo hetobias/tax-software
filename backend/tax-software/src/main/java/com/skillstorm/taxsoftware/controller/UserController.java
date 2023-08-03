@@ -9,25 +9,13 @@ import com.skillstorm.taxsoftware.service.UserService;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-
-  private final UserService userService;
-
   @Autowired
-  public UserController(UserService userService) {
-    this.userService = userService;
+  private UserService userService;
+
+  @GetMapping("/{oauthId}")
+  public User findByOauthId(@PathVariable String oauthId) {
+    return userService.findByOauthId(oauthId);
   }
 
-  @PostMapping("/register")
-  public User registerUser(@RequestBody User user) {
-    // Here, you can perform any additional validation or processing before calling
-    // the service method.
-    return userService.createUser(user);
-  }
-
-  @GetMapping("/{userId}")
-  public User getUser(@PathVariable String userId) {
-    return userService.getUserById(userId);
-  }
-
-  // Add more endpoints and request mappings as needed...
+  // Additional endpoints as required...
 }

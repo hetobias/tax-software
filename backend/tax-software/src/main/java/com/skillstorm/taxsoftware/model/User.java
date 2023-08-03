@@ -7,19 +7,15 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Document(collection = "users")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "users")
+
 public class User {
   @Id
   private String id;
-  private String firstName;
-  private String lastName;
-  private String email;
-  private String address;
-  private String city;
-  private String state;
-  private String postalCode;
+  private String oauthId;
+  private String username;
 }
