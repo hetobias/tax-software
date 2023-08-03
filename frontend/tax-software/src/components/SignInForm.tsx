@@ -1,4 +1,4 @@
-import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds"
+import { Button, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds"
 import React from "react"
 
 export default function SignInForm() {
@@ -15,7 +15,8 @@ export default function SignInForm() {
     }
 
     return (
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh"}}>
+        <div >
+            <GridContainer >
             <Form onSubmit={handleSubmit} large >
                 <Fieldset legend="Sign In" legendStyle="large">
                 <span>
@@ -61,6 +62,7 @@ export default function SignInForm() {
                 </p>
                 </Fieldset>
             </Form>
+            </GridContainer>
         </div>
 
     )
