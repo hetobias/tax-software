@@ -16,9 +16,10 @@ export default function CreateAccountForm() {
     }
 
     return (
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh"}}>
-            <Form onSubmit={handleSubmit} large >
-                <Fieldset legend="Create Account" legendStyle="large">
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "10em"}}>
+            <div style={{ maxWidth: "35em", minHeight: "100vh"}}>
+            <Form onSubmit={handleSubmit} large style={{minWidth: "100vw", minHeight: "100vh"}}>
+                <Fieldset legend="Create Account" legendStyle="large" >
                 <span>
                     or <Link to="signin">Sign In</Link>
                 </span>
@@ -29,13 +30,16 @@ export default function CreateAccountForm() {
                     type="text"
                     autoCapitalize="off"
                     autoCorrect="off"
+                    style={{maxWidth: "35em"}}
                 />
                 <Label htmlFor="password-sign-in">Password</Label>
                 <TextInput
                     id="password-sign-in"
                     name="password-sign-in"
                     type={showPassword ? 'text' : 'password'}
+                    style={{maxWidth: "35em"}}
                 />
+                <div style={{maxWidth: "35em"}}>
                 <p className="usa-form__note">
                     <a
                     title="Show password"
@@ -48,11 +52,13 @@ export default function CreateAccountForm() {
                     {showPassword ? 'Hide password' : 'Show password'}
                     </a>
                 </p>
+                </div>
         
                 <Button type="submit">Create Account</Button>
 
                 </Fieldset>
             </Form>
+            </div>
         </div>
 
     )
