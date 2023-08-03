@@ -1,4 +1,4 @@
-import { Address, Button, ExtendedNav, Footer, FooterNav, Grid, GridContainer, Header, Logo, NavMenuButton, ProcessList, ProcessListHeading, ProcessListItem, SocialLink, SocialLinks } from "@trussworks/react-uswds"
+import { Address, Button, ExtendedNav, Footer, GridContainer, Header, Logo, NavMenuButton, ProcessList, ProcessListHeading, ProcessListItem } from "@trussworks/react-uswds"
 import { useState } from "react"
 import { Link } from "react-router-dom";
 
@@ -26,53 +26,6 @@ export default function Home() {
           <GridContainer className="usa-footer__return-to-top">
             <a href="#">Return to top</a>
           </GridContainer>
-        )
-      
-        const socialLinkItems = [
-          <SocialLink key="facebook" name="Facebook" href="#" />,
-          <SocialLink key="twitter" name="Twitter" href="#" />,
-          <SocialLink key="youtube" name="YouTube" href="#" />,
-          <SocialLink key="instagram" name="Instagram" href="#" />,
-          <SocialLink key="rss" name="RSS" href="#" />,
-        ]
-      
-        const footerPrimary = (
-          <FooterNav
-            aria-label="Footer navigation"
-            size="medium"
-            links={Array(5).fill(
-              <a href="javascript:void(0)" className="usa-footer__primary-link">
-                Primary link
-              </a>
-            )}
-          />
-        )
-      
-        const footerSecondary = (
-          <>
-            <Grid row gap>
-              <Logo
-                size="medium"
-                image={<img className="usa-footer__logo-img" src={"./20945248.jpg"} alt="" />}
-                heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
-              />
-              <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
-                <SocialLinks links={socialLinkItems} />
-                <h3 className="usa-footer__contact-heading">Agency Contact Center</h3>
-                <Address
-                  size="medium"
-                  items={[
-                    <a key="telephone" href="tel:1-800-555-5555">
-                      (800) CALL-GOVT
-                    </a>,
-                    <a key="email" href="mailto:info@agency.gov">
-                      info@agency.gov
-                    </a>,
-                  ]}
-                />
-              </Grid>
-            </Grid>
-          </>
         )
 
         return (
@@ -105,7 +58,7 @@ export default function Home() {
 
             <div style={{ marginTop: '32px', textAlign: 'center' }}>
               <GridContainer>
-                <Button type="button" size="big" accentStyle="cool">Get Started Today</Button>
+              <Link to="signin"><Button type="button" size="big" accentStyle="cool">Get Started Today</Button></Link>
               </GridContainer>
             </div>
 
@@ -136,9 +89,40 @@ export default function Home() {
             </main>
       
             <Footer
+              size="slim"
               returnToTop={returnToTop}
-              primary={footerPrimary}
-              secondary={footerSecondary}
+              primary={
+                <div className="usa-footer__primary-container grid-row">
+
+                  <div className="tablet:grid-col-4">
+                    <Address
+                      size="slim"
+                      items={[
+                        <a key="telephone" href="tel:1-800-555-5555">
+                          (800) CALL-GOVT
+                        </a>,
+                        <a key="email" href="mailto:info@agency.gov">
+                          info@agency.gov
+                        </a>,
+                      ]}
+                    />
+                  </div>
+
+                </div>
+              }
+              secondary={
+                <Logo
+                  size="slim"
+                  image={
+                    <img
+                      className="usa-footer__logo-img"
+                      alt="gear"
+                      src={"./gear.png"}
+                    />
+                  }
+                  heading={<p className="usa-footer__logo-heading">Tax Genius</p>}
+                />
+              }
             />
           </>
         )

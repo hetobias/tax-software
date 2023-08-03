@@ -21,7 +21,7 @@ export default function CreateAccountForm() {
             <Form onSubmit={handleSubmit} large style={{minWidth: "100vw", minHeight: "100vh"}}>
                 <Fieldset legend="Create Account" legendStyle="large" >
                 <span>
-                    or <Link to="signin">Sign In</Link>
+                    or <Link to="/signin">Sign In</Link>
                 </span>
                 <Label htmlFor="username">Email address</Label>
                 <TextInput
