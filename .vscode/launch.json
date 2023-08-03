@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-TaxSoftwareApplication<tax-software>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.skillstorm.taxsoftware.TaxSoftwareApplication",
+      "projectName": "tax-software",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
