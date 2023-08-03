@@ -11,11 +11,12 @@ import lombok.Getter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "users")
+@Document(collection = "taxgenius")
 
 public class User {
   @Id
   private String id;
   private String oauthId;
-  private String username;
+  private String firstName;
+  private String lastName;
 }

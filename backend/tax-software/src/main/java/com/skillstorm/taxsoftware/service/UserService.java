@@ -12,7 +12,9 @@ public class UserService {
   private UserRepository userRepository;
 
   public User findByOauthId(String oauthId) {
-    return userRepository.findByOauthId(oauthId);
+    User user = userRepository.findByOauthId(oauthId);
+    System.out.println("findByOauthId - oauthId: " + oauthId + ", User: " + user);
+    return user;
   }
 
   // More service methods as required...
