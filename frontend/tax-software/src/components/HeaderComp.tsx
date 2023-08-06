@@ -22,20 +22,18 @@ export default function HeaderComp() {
   
   
     const primaryNavItems = [
-    // <a>Get your Tax Estimates with Tax Genius!</a>
     <div>
-
         <Button type="button" onClick={() => onClickLanguageChange("en")}>English</Button>
         <Button type="button" onClick={() => onClickLanguageChange("es")}>Spanish</Button>
         <Button type="button" onClick={() => onClickLanguageChange("ko")}>Korean</Button>
         <Button type="button" onClick={() => onClickLanguageChange("zh")}>Chinese</Button>
-
+        <Link to="/personal_information"><Button type="button">Personal Info</Button></Link>
     </div>
     ]
   
     const secondaryNavItems = [
-      <Link to="/signin"><Button type="button">{t("signIn", {ns: ['main', 'home']})}</Button></Link>,
-      <Link to="/createaccount"><Button type="button" accentStyle="cool">{t("createAccount", {ns: ['main', 'home']})}</Button></Link>
+      <Link to="/sign_in"><Button type="button">{t("signIn", {ns: ['main', 'home']})}</Button></Link>,
+      <Link to="/create_account"><Button type="button" accentStyle="cool">{t("createAccount", {ns: ['main', 'home']})}</Button></Link>
     ]
 
     return (

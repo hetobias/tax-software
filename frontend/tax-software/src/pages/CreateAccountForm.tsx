@@ -2,7 +2,7 @@ import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswd
 import React from "react"
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import HeaderComp from "./HeaderComp";
+import HeaderComp from "../components/HeaderComp";
 
 export default function CreateAccountForm() {
 
@@ -27,7 +27,7 @@ export default function CreateAccountForm() {
                     <Form onSubmit={handleSubmit} large style={{minWidth: "100vw", minHeight: "100vh"}}>
                         <Fieldset legend={t("createAccount", {ns: ['main', 'home']})} legendStyle="large" >
                         <span>
-                        {t("or", {ns: ['main', 'home']})} <Link to="/signin">{t("signIn", {ns: ['main', 'home']})}</Link>
+                        {t("or", {ns: ['main', 'home']})} <Link to="/sign_in">{t("signIn", {ns: ['main', 'home']})}</Link>
                         </span>
                         <Label htmlFor="username">{t("email", {ns: ['main', 'home']})}</Label>
                         <TextInput
