@@ -1,0 +1,14 @@
+{
+    "signIn" : "Sign In",
+    "createAccount" : "Create Account",
+    "headerLine" : "Get your Tax Estimates with Tax Genius!",
+    "getStartedToday" : "Get Started Today",
+    "main1" : "Login or Create an Account.",
+    "main2" : "Fill in your Information",
+    "main3" : "Review...and Get your Tax Estimate!",
+    "returnToTop" : "Return to top",
+    "taxGenius" : "Tax Genius",
+    "email" : "Email Address",
+    "password": "Password",
+    "showPass" : "Show Password"
+}

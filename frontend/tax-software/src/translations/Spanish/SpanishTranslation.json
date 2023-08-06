@@ -1,0 +1,14 @@
+{
+    "signIn" : "Iniciar sesión",
+    "createAccount" : "CrearCuenta",
+    "headerLine" : "¡Obtenga sus estimaciones fiscales con Tax Genius!",
+    "getStartedToday" : "Comience hoy mismo",
+    "main1" : "Inicie sesión o cree una cuenta",
+    "main2" : "Rellene sus datos",
+    "main3" : "Revise... ¡y obtenga su Estimación Fiscal!",
+    "returnToTop" : "Volver al principio",
+    "taxGenius" : "Tax Genius",
+    "email" : "Dirección de correo electrónico",
+    "password": "Contraseña",
+    "showPass" : "Mostrar contraseña"
+}

@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignInForm from './components/SignInForm';
 import CreateAccountForm from './components/CreateAccountForm';
+import "./i18n.tsx";
 
 
 export default function App() {

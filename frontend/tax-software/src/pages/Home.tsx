@@ -1,8 +1,16 @@
 import { Address, Button, ExtendedNav, Footer, GridContainer, Header, Logo, NavMenuButton, ProcessList, ProcessListHeading, ProcessListItem } from "@trussworks/react-uswds"
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 export default function Home() {
+
+        const { t, i18n } = useTranslation(['home', 'main']);
+
+        const onClickLanguageChange = (lng: string) => {
+          i18n.changeLanguage(lng);    // change the language
+        }
+        
 
         const [mobileNavOpen, setMobileNavOpen] = useState(false)
         const [expanded, setExpanded] = useState(false)
@@ -14,17 +22,23 @@ export default function Home() {
       
       
         const primaryNavItems = [
-        <a>Get your Tax Estimates with Tax Genius!</a>
+        // <a>Get your Tax Estimates with Tax Genius!</a>
+        <div>
+
+            <Button type="button" onClick={() => onClickLanguageChange("en")}>English</Button>
+            <Button type="button" onClick={() => onClickLanguageChange("es")}>Spanish</Button>
+
+        </div>
         ]
       
         const secondaryNavItems = [
-          <Link to="signin"><Button type="button">Sign In</Button></Link>,
-          <Link to="createaccount"><Button type="button" accentStyle="cool">Create Account</Button></Link>
+          <Link to="signin"><Button type="button">{t("signIn", {ns: ['main', 'home']})}</Button></Link>,
+          <Link to="createaccount"><Button type="button" accentStyle="cool">{t("createAccount", {ns: ['main', 'home']})}</Button></Link>
         ]
       
         const returnToTop = (
           <GridContainer className="usa-footer__return-to-top">
-            <a href="#">Return to top</a>
+            <a href="#">{t("returnToTop", {ns: ['main', 'home']})}</a>
           </GridContainer>
         )
 
@@ -58,7 +72,7 @@ export default function Home() {
 
             <div style={{ marginTop: '32px', textAlign: 'center' }}>
               <GridContainer>
-              <Link to="signin"><Button type="button" size="big" accentStyle="cool">Get Started Today</Button></Link>
+              <Link to="signin"><Button type="button" size="big" accentStyle="cool">{t("getStartedToday", {ns: ['main', 'home']})}</Button></Link>
               </GridContainer>
             </div>
 
@@ -68,17 +82,17 @@ export default function Home() {
                       <ProcessList>
                       <ProcessListItem className="padding-bottom-4">
                         <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
-                          Login or Create an Account.
+                        {t("main1", {ns: ['main', 'home']})}
                         </ProcessListHeading>
                       </ProcessListItem>
                       <ProcessListItem className="padding-bottom-4">
                         <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
-                          Fill in your Information.
+                        {t("main2", {ns: ['main', 'home']})}
                         </ProcessListHeading>
                       </ProcessListItem>
                       <ProcessListItem>
                         <ProcessListHeading type="p" className="font-sans-xl line-height-sans-1">
-                        Review...and Get your Tax Estimate!
+                        {t("main3", {ns: ['main', 'home']})}
                         </ProcessListHeading>
                       </ProcessListItem>
                     </ProcessList>
@@ -120,7 +134,7 @@ export default function Home() {
                       src={"./gear.png"}
                     />
                   }
-                  heading={<p className="usa-footer__logo-heading">Tax Genius</p>}
+                  heading={<p className="usa-footer__logo-heading">{t("taxGenius", {ns: ['main', 'home']})}</p>}
                 />
               }
             />
