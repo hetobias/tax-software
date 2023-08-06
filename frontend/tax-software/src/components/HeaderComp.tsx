@@ -34,8 +34,8 @@ export default function HeaderComp() {
     ]
   
     const secondaryNavItems = [
-      <Link to="signin"><Button type="button">{t("signIn", {ns: ['main', 'home']})}</Button></Link>,
-      <Link to="createaccount"><Button type="button" accentStyle="cool">{t("createAccount", {ns: ['main', 'home']})}</Button></Link>
+      <Link to="/signin"><Button type="button">{t("signIn", {ns: ['main', 'home']})}</Button></Link>,
+      <Link to="/createaccount"><Button type="button" accentStyle="cool">{t("createAccount", {ns: ['main', 'home']})}</Button></Link>
     ]
 
     return (

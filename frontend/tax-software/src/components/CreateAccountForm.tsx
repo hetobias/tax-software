@@ -25,7 +25,7 @@ export default function CreateAccountForm() {
             <div style={{ display: "flex", justifyContent: "center", marginTop: "10em"}}>
                 <div style={{ maxWidth: "35em", minHeight: "100vh"}}>
                     <Form onSubmit={handleSubmit} large style={{minWidth: "100vw", minHeight: "100vh"}}>
-                        <Fieldset legend="Create Account" legendStyle="large" >
+                        <Fieldset legend={t("createAccount", {ns: ['main', 'home']})} legendStyle="large" >
                         <span>
                         {t("or", {ns: ['main', 'home']})} <Link to="/signin">{t("signIn", {ns: ['main', 'home']})}</Link>
                         </span>
