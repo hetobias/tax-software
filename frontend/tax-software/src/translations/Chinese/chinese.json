@@ -1,0 +1,16 @@
+{
+    "signIn" : "登录",
+    "createAccount" : "创建账户",
+    "headerLine" : "使用 Tax Genius 获取税务估算！",
+    "getStartedToday" : "立即开始",
+    "main1" : "登录或创建账户",
+    "main2" : "填写信息",
+    "main3" : "审核......并获取您的税款估算！",
+    "returnToTop" : "返回顶部",
+    "taxGenius" : "Tax Genius",
+    "email" : "电子邮件地址",
+    "password" : "密码",
+    "showPass" : "显示密码",
+    "hidePass" :"隐藏密码",
+    "or" : "或"
+}

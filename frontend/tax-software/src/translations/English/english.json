@@ -10,5 +10,7 @@
     "taxGenius" : "Tax Genius",
     "email" : "Email Address",
     "password": "Password",
-    "showPass" : "Show Password"
+    "showPass" : "Show Password",
+    "hidePass" :"Hide Password",
+    "or" : "or"
 }
