@@ -1,0 +1,16 @@
+{
+    "signIn" : "로그인",
+    "createAccount" : "계정 만들기",
+    "headerLine" : "세금 지니어스로 세금 견적을 받으세요!",
+    "getStartedToday" : "오늘 시작하기",
+    "main1" : "로그인 또는 계정 만들기.",
+    "main2" : "정보 입력",
+    "main3" : "검토...그리고 세금 견적을 받으세요!",
+    "returnToTop" : "맨 위로 돌아 가기",
+    "Tax Genius" : "세금 천재",
+    "email" : "이메일 주소",
+    "password": "비밀번호",
+    "showPass" : "비밀번호 표시",
+    "hidePass" :"비밀번호 숨기기",
+    "or" :"또는"
+}
