@@ -12,5 +12,6 @@
     "password": "Contraseña",
     "showPass" : "Mostrar contraseña",
     "hidePass" : "Ocultar contraseña",
-    "or" : "o"
+    "or" : "o",
+    "landingImage" : "./TaxGeniusLanding_es.png"
 }

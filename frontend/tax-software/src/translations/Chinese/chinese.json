@@ -12,5 +12,6 @@
     "password" : "密码",
     "showPass" : "显示密码",
     "hidePass" :"隐藏密码",
-    "or" : "或"
+    "or" : "或",
+    "landingImage" : "./TaxGeniusLanding_zh.png"
 }

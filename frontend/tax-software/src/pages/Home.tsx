@@ -21,7 +21,7 @@ export default function Home() {
 
             <section>
               <GridContainer>
-                <img className="usa-media-block__img" src={"./TaxGenius_Landing.png"} alt="Alt text"></img>
+                <img className="usa-media-block__img" src={t("landingImage", {ns: ['main', 'home']})} alt="Alt text"></img>
               </GridContainer>
             </section>
 
@@ -67,12 +67,9 @@ export default function Home() {
                     <Address
                       size="slim"
                       items={[
-                        <a key="telephone" href="tel:1-800-555-5555">
-                          (800) CALL-GOVT
-                        </a>,
-                        <a key="email" href="mailto:info@agency.gov">
-                          info@agency.gov
-                        </a>,
+                        <a>
+                          {t("headerLine", {ns: ['main', 'home']})}
+                        </a>
                       ]}
                     />
                   </div>
