@@ -3,17 +3,20 @@ import { useState } from "react";
 
 export default function AddressForm() {
 
-    const [inputValue, setInputValue] = useState("");
-    const [inputValue1, setInputValue1] = useState("");
+    const [streetAddress, setStreetAddress] = useState("");
+    const [streetAddress2, setStreetAddress2] = useState("");
+    const [state, setState] = useState("");
+    const [city, setCity] = useState("");
+    const [zip, setZip] = useState("");
 
-    const handleInputChange = (event: any) => {
+    const handleCityChange = (event: any) => {
         const newValue = event.target.value.replace(/[0-9]/g, '');
-        setInputValue(newValue);
+        setCity(newValue);
     }
 
-    const handleInputChange1 = (event: any) => {
+    const handleZipChange = (event: any) => {
         const newValue = event.target.value.replace(/[^0-9]/g, '');
-        setInputValue1(newValue);
+        setZip(newValue);
     }
 
     function handleSubmit() {
@@ -37,10 +40,22 @@ export default function AddressForm() {
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
-                        <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
+                        <TextInput 
+                            id="mailing-address-1" 
+                            name="mailing-address-1" 
+                            type="text"
+                            value={streetAddress}
+                            onChange={(e) => setStreetAddress(e.target.value)}
+                             />
 
                         <Label htmlFor="mailing-address-2">Street address line 2</Label>
-                        <TextInput id="mailing-address-2" name="mailing-address-2" type="text" />
+                        <TextInput 
+                            id="mailing-address-2" 
+                            name="mailing-address-2" 
+                            type="text"
+                            value={streetAddress2}
+                            onChange={(e) => setStreetAddress2(e.target.value)}
+                             />
 
                         <Label htmlFor="city">
                             City{' '}
@@ -48,8 +63,14 @@ export default function AddressForm() {
                             *
                             </abbr>
                         </Label>
-                        <TextInput id="city" name="city" type="text" value={inputValue}
-                                   onChange={handleInputChange} required />
+                        <TextInput 
+                            id="city" 
+                            name="city" 
+                            type="text" 
+                            value={city}
+                            onChange={handleCityChange} 
+                            required
+                             />
 
                         <Label htmlFor="state">
                             State, territory, or military post{' '}
@@ -57,7 +78,12 @@ export default function AddressForm() {
                             *
                             </abbr>
                         </Label>
-                        <Dropdown id="state" name="state" required>
+                        <Dropdown 
+                            id="state" 
+                            name="state" 
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            required>
                             <option>- Select -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -125,8 +151,8 @@ export default function AddressForm() {
                             type="text"
                             inputSize="medium"
                             pattern="[\d]{5}(-[\d]{4})?"
-                            value={inputValue1}
-                            onChange={handleInputChange1}
+                            value={zip}
+                            onChange={handleZipChange}
                         />
                         </Fieldset>
                     </Form>

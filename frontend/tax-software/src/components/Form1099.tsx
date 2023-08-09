@@ -1,10 +1,14 @@
 import { Button, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
+import { useState } from "react";
 
 interface FormW2Props {
     goBackToTaxChoice: () => void;
 }
 
 export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
+
+    const [ssnOrEin, setSsnOrEin] = useState("");
+    const [totalComp, setTotalComp] = useState("");
 
     function handleSubmit() {
         // event.preventDefault();
@@ -27,7 +31,13 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
                             *
                             </abbr></Label>
                             <span className="usa-hint">SSN: 123-45-6789 / EIN: 123456789</span>
-                            <TextInput id="ein" name="ein" type="text" style={{maxWidth: "20rem"}} />
+                            <TextInput 
+                                id="ein" 
+                                name="ein" 
+                                type="text" 
+                                value={ssnOrEin}
+                                onChange={(e) => setSsnOrEin(e.target.value)}
+                                style={{maxWidth: "20rem"}} />
                         </div>
 
                         <div>
@@ -36,7 +46,14 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
                             *
                             </abbr></Label>
                             <span className="usa-hint">Please input a valid number</span>
-                            <TextInput id="totalComp" name="totalComp" type="text" placeholder="$" style={{maxWidth: "15rem"}}/>
+                            <TextInput 
+                                id="totalComp" 
+                                name="totalComp" 
+                                type="text" 
+                                placeholder="$" 
+                                value={totalComp}
+                                onChange={(e) => setTotalComp(e.target.value)}
+                                style={{maxWidth: "15rem"}}/>
                         </div>
 
                     </Fieldset>
