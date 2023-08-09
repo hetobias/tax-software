@@ -9,10 +9,10 @@ export default function NameForm() {
     return (
         <>
         <GridContainer>
-            <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px"}}>
+            <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px", padding: "2em"}}>
               <Form onSubmit={handleSubmit} >
                 
-                    <Fieldset legend="Name" legendStyle="large" style={{minWidth: "25vw", paddingBottom: "2em", marginLeft: "2em"}}>
+                    <Fieldset legend="Name" legendStyle="large" style={{minWidth: "25vw"}}>
                         <div>
                             <Label htmlFor="first-name">First or given name{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">

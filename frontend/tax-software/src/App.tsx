@@ -6,6 +6,8 @@ import CreateAccountForm from './pages/CreateAccountForm';
 import PersonalInfoForm from './pages/PersonalInfoForm';
 import HouseholdStatusForm from './pages/HouseholdStatusForm';
 import HouseholdIncomeForm from './pages/HouseholdIncomeForm';
+import FormW2 from './components/FormW2';
+import Form1099 from './components/Form1099';
 
 
 export default function App() {

@@ -23,7 +23,7 @@ export default function Home() {
 
             <div style={{ marginTop: '32px', textAlign: 'center' }}>
               <GridContainer>
-              <Link to="signin"><Button type="button" size="big" accentStyle="cool">{t("getStartedToday", {ns: ['main', 'home']})}</Button></Link>
+              <Link to="/sign_in"><Button type="button" size="big" accentStyle="cool">{t("getStartedToday", {ns: ['main', 'home']})}</Button></Link>
               </GridContainer>
             </div>
 

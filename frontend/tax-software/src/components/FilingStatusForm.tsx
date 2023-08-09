@@ -21,8 +21,8 @@ export default function FilingStatusForm() {
     return (
         <>
             <GridContainer>
-                <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px"}}>
-                    <Fieldset legend="Filing Status" legendStyle="large" style={{minWidth: "25vw", paddingBottom: "2em", marginLeft: "2em"}}><br/>
+                <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px", padding: "2em"}}>
+                    <Fieldset legend="Filing Status" legendStyle="large" style={{minWidth: "25vw"}}><br/>
                         <div>
                             <h3>Are you single or married?</h3>
                             <Radio

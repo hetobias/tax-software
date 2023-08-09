@@ -2,8 +2,22 @@ import { Button, GridContainer, StepIndicator, StepIndicatorStep } from "@trussw
 import HeaderComp from "../components/HeaderComp";
 import { Link } from "react-router-dom";
 import FooterComp from "../components/FooterComp";
+import TaxChoice from "../components/TaxChoice";
+import { useState } from "react";
+import FormW2 from "../components/FormW2";
+import Form1099 from "../components/Form1099";
 
 export default function HouseholdIncomeForm() {
+
+    const [selectedTaxChoice, setSelectedTaxChoice] = useState<string | null>(null);
+
+    const handleTaxChoice = (choice: string) => {
+        setSelectedTaxChoice(choice);
+    };
+
+    const goBackToTaxChoice = () => {
+        setSelectedTaxChoice(null);
+    }
 
     return (
         <>
@@ -20,6 +34,14 @@ export default function HouseholdIncomeForm() {
                     </StepIndicator>
                 </div>
             </GridContainer>
+            {selectedTaxChoice === null ? ( // Display TaxChoice component initially
+                <TaxChoice onTaxChoice={handleTaxChoice} />
+            ) : selectedTaxChoice === "w2" ? (
+                <FormW2 goBackToTaxChoice={goBackToTaxChoice}/>
+            ) : (
+                <Form1099 goBackToTaxChoice={goBackToTaxChoice}/>
+            )}
+
             <br/>
             <GridContainer>
                 <Link to={"/household_status"}><Button type="button" size="big" style={{textAlign: "left"}}>Back</Button></Link>
