@@ -14,7 +14,10 @@ export default function NameForm() {
                 
                     <Fieldset legend="Name" legendStyle="large" style={{minWidth: "25vw", paddingBottom: "2em", marginLeft: "2em"}}>
                         <div>
-                            <Label htmlFor="first-name">First or given name</Label>
+                            <Label htmlFor="first-name">First or given name{' '}
+                            <abbr title="required" className="usa-hint usa-hint--required">
+                            *
+                            </abbr></Label>
                             <span className="usa-hint">For example, Jose, Darren, or Mai</span>
                             <TextInput id="first-name" name="first-name" type="text" />
                         </div>
@@ -25,7 +28,10 @@ export default function NameForm() {
                         </div>
 
                         <div>
-                            <Label htmlFor="last-name">Last or family name</Label>
+                            <Label htmlFor="last-name">Last or family name{' '}
+                            <abbr title="required" className="usa-hint usa-hint--required">
+                            *
+                            </abbr></Label>
                             <span className="usa-hint">
                                 For example, Martinez Gonzalez, Gu, or Smith
                             </span>

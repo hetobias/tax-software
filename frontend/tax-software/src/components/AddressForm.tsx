@@ -1,6 +1,20 @@
 import { Dropdown, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
+import { useState } from "react";
 
 export default function AddressForm() {
+
+    const [inputValue, setInputValue] = useState("");
+    const [inputValue1, setInputValue1] = useState("");
+
+    const handleInputChange = (event: any) => {
+        const newValue = event.target.value.replace(/[0-9]/g, '');
+        setInputValue(newValue);
+    }
+
+    const handleInputChange1 = (event: any) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setInputValue1(newValue);
+    }
 
     function handleSubmit() {
         // event.preventDefault();
@@ -19,7 +33,10 @@ export default function AddressForm() {
                             </abbr>
                             ).
                         </p>
-                        <Label htmlFor="mailing-address-1">Street address</Label>
+                        <Label htmlFor="mailing-address-1">Street address{' '}
+                            <abbr title="required" className="usa-hint usa-hint--required">
+                            *
+                            </abbr></Label>
                         <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
 
                         <Label htmlFor="mailing-address-2">Street address line 2</Label>
@@ -31,7 +48,8 @@ export default function AddressForm() {
                             *
                             </abbr>
                         </Label>
-                        <TextInput id="city" name="city" type="text" required />
+                        <TextInput id="city" name="city" type="text" value={inputValue}
+                                   onChange={handleInputChange} required />
 
                         <Label htmlFor="state">
                             State, territory, or military post{' '}
@@ -107,6 +125,8 @@ export default function AddressForm() {
                             type="text"
                             inputSize="medium"
                             pattern="[\d]{5}(-[\d]{4})?"
+                            value={inputValue1}
+                            onChange={handleInputChange1}
                         />
                         </Fieldset>
                     </Form>
