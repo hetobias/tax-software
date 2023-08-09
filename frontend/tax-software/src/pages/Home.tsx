@@ -2,16 +2,12 @@ import { Address, Button, Footer, GridContainer, Logo, ProcessList, ProcessListH
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import HeaderComp from "../components/HeaderComp"
+import FooterComp from "../components/FooterComp";
 
 export default function Home() {
 
         const { t } = useTranslation(['main', 'home']); 
       
-        const returnToTop = (
-          <GridContainer className="usa-footer__return-to-top">
-            <a href="#">{t("returnToTop", {ns: ['main', 'home']})}</a>
-          </GridContainer>
-        )
 
         return (
           <>
@@ -27,7 +23,7 @@ export default function Home() {
 
             <div style={{ marginTop: '32px', textAlign: 'center' }}>
               <GridContainer>
-              <Link to="signin"><Button type="button" size="big" accentStyle="cool">{t("getStartedToday", {ns: ['main', 'home']})}</Button></Link>
+              <Link to="/sign_in"><Button type="button" size="big" accentStyle="cool">{t("getStartedToday", {ns: ['main', 'home']})}</Button></Link>
               </GridContainer>
             </div>
 
@@ -57,39 +53,7 @@ export default function Home() {
 
             </main>
       
-            <Footer
-              size="slim"
-              returnToTop={returnToTop}
-              primary={
-                <div className="usa-footer__primary-container grid-row">
-
-                  <div className="tablet:grid-col-4">
-                    <Address
-                      size="slim"
-                      items={[
-                        <a>
-                          {t("headerLine", {ns: ['main', 'home']})}
-                        </a>
-                      ]}
-                    />
-                  </div>
-
-                </div>
-              }
-              secondary={
-                <Logo
-                  size="slim"
-                  image={
-                    <img
-                      className="usa-footer__logo-img"
-                      alt="gear"
-                      src={"./gear.png"}
-                    />
-                  }
-                  heading={<p className="usa-footer__logo-heading">{t("taxGenius", {ns: ['main', 'home']})}</p>}
-                />
-              }
-            />
+            <FooterComp />
           </>
         )
 }

@@ -1,7 +1,7 @@
 import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds"
 import React from "react"
 import { Link } from "react-router-dom"
-import HeaderComp from "./HeaderComp"
+import HeaderComp from "../components/HeaderComp"
 import { useTranslation } from "react-i18next"
 
 export default function SignInForm() {
@@ -27,7 +27,7 @@ export default function SignInForm() {
                     <Form onSubmit={handleSubmit} large style={{minWidth: "100vw", minHeight: "100vh"}}>
                         <Fieldset legend={t("signIn", {ns: ['main', 'home']})} legendStyle="large" >
                         <span>
-                        {t("or", {ns: ['main', 'home']})} <Link to="/createaccount">{t("createAccount", {ns: ['main', 'home']})}</Link>
+                        {t("or", {ns: ['main', 'home']})} <Link to="/create_account">{t("createAccount", {ns: ['main', 'home']})}</Link>
                         </span>
                         <Label htmlFor="username">{t("email", {ns: ['main', 'home']})}</Label>
                         <TextInput
