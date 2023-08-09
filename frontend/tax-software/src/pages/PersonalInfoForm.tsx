@@ -4,8 +4,11 @@ import NameForm from "../components/NameForm";
 import AddressForm from "../components/AddressForm";
 import FooterComp from "../components/FooterComp";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function PersonalInfoForm() {
+
+    const { t, i18n } = useTranslation(['home', 'main']);
 
     return (
         <>
@@ -14,11 +17,11 @@ export default function PersonalInfoForm() {
             <GridContainer>
                 <div style={{ minWidth: "60vw"}}>
                     <StepIndicator counters="default" headingLevel="h4">
-                        <StepIndicatorStep label="Personal information" status="current" />
-                        <StepIndicatorStep label="Household status" />
-                        <StepIndicatorStep label="Household income" />
-                        <StepIndicatorStep label="Review and submit" />
-                        <StepIndicatorStep label="Tax Estimate" />
+                        <StepIndicatorStep label={t("personalInfo", {ns: ['main', 'home']})} status="current" />
+                        <StepIndicatorStep label={t("householdStatus", {ns: ['main', 'home']})} />
+                        <StepIndicatorStep label={t("householdIncome", {ns: ['main', 'home']})} />
+                        <StepIndicatorStep label={t("reviewSubmit", {ns: ['main', 'home']})} />
+                        <StepIndicatorStep label={t("taxEstimate", {ns: ['main', 'home']})} />
                     </StepIndicator>
                 </div>
             </GridContainer>
@@ -33,7 +36,7 @@ export default function PersonalInfoForm() {
             <br/>
             <GridContainer>
                 <div style={{textAlign: "right"}}>
-                <Link to={"/household_status"}><Button type="button" size="big">Submit and Next</Button></Link>
+                <Link to={"/household_status"}><Button type="button" size="big">{t("submitAndNext", {ns: ['main', 'home']})}</Button></Link>
                 </div>
             </GridContainer>
             <FooterComp />

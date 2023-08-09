@@ -3,9 +3,11 @@ import HeaderComp from "../components/HeaderComp";
 import FilingStatusForm from "../components/FilingStatusForm";
 import FooterComp from "../components/FooterComp";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function HouseholdStatusForm() {
 
+    const { t, i18n } = useTranslation(['home', 'main']);
 
     return (
         <>
@@ -14,19 +16,19 @@ export default function HouseholdStatusForm() {
             <GridContainer>
                 <div style={{ minWidth: "60vw"}}>
                     <StepIndicator counters="default" headingLevel="h4">
-                        <StepIndicatorStep label="Personal information" status="complete" />
-                        <StepIndicatorStep label="Household status" status="current" />
-                        <StepIndicatorStep label="Household income" />
-                        <StepIndicatorStep label="Review and submit" />
-                        <StepIndicatorStep label="Tax Estimate" />
+                        <StepIndicatorStep label={t("personalInfo", {ns: ['main', 'home']})} status="complete" />
+                        <StepIndicatorStep label={t("householdStatus", {ns: ['main', 'home']})} status="current" />
+                        <StepIndicatorStep label={t("householdIncome", {ns: ['main', 'home']})} />
+                        <StepIndicatorStep label={t("reviewSubmit", {ns: ['main', 'home']})} />
+                        <StepIndicatorStep label={t("taxEstimate", {ns: ['main', 'home']})} />
                     </StepIndicator>
                 </div>
             </GridContainer>
             <FilingStatusForm />
             <br/>
             <GridContainer>
-                <Link to={"/personal_information"}><Button type="button" size="big" style={{textAlign: "left"}}>Back</Button></Link>
-                <Link to={"/household_income"}><Button type="button" size="big" style={{float: "right"}}>Submit and Next</Button></Link>
+                <Link to={"/personal_information"}><Button type="button" size="big" style={{textAlign: "left"}}>{t("back", {ns: ['main', 'home']})}</Button></Link>
+                <Link to={"/household_income"}><Button type="button" size="big" style={{float: "right"}}>{t("submitAndNext", {ns: ['main', 'home']})}</Button></Link>
             </GridContainer>
             <FooterComp />
 

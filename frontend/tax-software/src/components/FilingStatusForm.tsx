@@ -1,7 +1,10 @@
 import { Fieldset, GridContainer, Radio, TextInput } from "@trussworks/react-uswds";
 import { useState } from "react";
+import { useTranslation } from "react-i18next"
 
 export default function FilingStatusForm() {
+
+    const { t, i18n } = useTranslation(['home', 'main']);
 
     const [singleOrMarried, setSingleOrMarried] = useState("");
     const [jointlyOrSingle, setJointlyOrSingle] = useState("");
@@ -24,13 +27,13 @@ export default function FilingStatusForm() {
         <>
             <GridContainer>
                 <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px", padding: "2em"}}>
-                    <Fieldset legend="Filing Status" legendStyle="large" style={{minWidth: "25vw"}}><br/>
+                    <Fieldset legend={t("filingStatus", {ns: ['main', 'home']})} legendStyle="large" style={{minWidth: "25vw"}}><br/>
                         <div>
-                            <h3>Are you single or married?</h3>
+                            <h3>{t("singleOrMarriedQuestion", {ns: ['main', 'home']})}</h3>
                             <Radio
                             id="single"
                             name="married-single"
-                            label="Single"
+                            label={t("single", {ns: ['main', 'home']})}
                             value="single"
                             checked={singleOrMarried === "single"}
                             onChange={() => setSingleOrMarried("single")}
@@ -38,7 +41,7 @@ export default function FilingStatusForm() {
                             <Radio
                             id="married"
                             name="married-single"
-                            label="Married"
+                            label={t("married", {ns: ['main', 'home']})}
                             value="married"
                             checked={singleOrMarried === "married"}
                             onChange={() => setSingleOrMarried("married")}
@@ -47,18 +50,18 @@ export default function FilingStatusForm() {
 
                         {singleOrMarried === "married" && (
                             <div>
-                                <h3>Will you file jointly or as single?</h3>
+                                <h3>{t("fileJointOrSingleQuestion", {ns: ['main', 'home']})}</h3>
                                 <Radio
                                 id="single1"
                                 name="joint-single"
-                                label="Single"
+                                label={t("single", {ns: ['main', 'home']})}
                                 value="single"
                                 onChange={() => setJointlyOrSingle("single")}
                                 />
                                 <Radio
                                 id="joint"
                                 name="joint-single"
-                                label="Joint"
+                                label={t("joint", {ns: ['main', 'home']})}
                                 value="joint"
                                 onChange={() => setJointlyOrSingle("joint")}
                                 /><br/>
@@ -67,18 +70,18 @@ export default function FilingStatusForm() {
 
                         {singleOrMarried === "single" && (
                             <div>
-                                <h3>Are you the head of household?</h3>
+                                <h3>{t("headOfHouseholdQuestion", {ns: ['main', 'home']})}</h3>
                                 <Radio
                                 id="yes"
                                 name="head-of-household"
-                                label="Yes"
+                                label={t("yes", {ns: ['main', 'home']})}
                                 value="yes"
                                 onChange={() => setIsHeadofHousehold(true)}
                                 />
                                 <Radio
                                 id="no"
                                 name="head-of-household"
-                                label="No"
+                                label={t("no", {ns: ['main', 'home']})}
                                 value="no"
                                 onChange={() => setIsHeadofHousehold(false)}
                                 />
@@ -86,11 +89,11 @@ export default function FilingStatusForm() {
                         )}
 
                         <div>
-                            <h3>Do you have Dependents?</h3>
+                            <h3>{t("hasDependentQuestion", {ns: ['main', 'home']})}</h3>
                             <Radio
                             id="yes1"
                             name="dependents"
-                            label="Yes"
+                            label={t("yes", {ns: ['main', 'home']})}
                             value="yes1"
                             checked={hasDependent === true}
                             onChange={() => setHasDependent(true)}
@@ -98,7 +101,7 @@ export default function FilingStatusForm() {
                             <Radio
                             id="no1"
                             name="dependents"
-                            label="No"
+                            label={t("no", {ns: ['main', 'home']})}
                             value="no1"
                             checked={hasDependent === false}
                             onChange={() => {
@@ -110,8 +113,8 @@ export default function FilingStatusForm() {
 
                         {hasDependent === true && (
                             <div>
-                                <h3>How many Dependents do you have?</h3>
-                                <span className="usa-hint">Please insert a number (Example: 2)</span>
+                                <h3>{t("howManyDependentQuestion", {ns: ['main', 'home']})}</h3>
+                                <span className="usa-hint">{t("dependentExample", {ns: ['main', 'home']})}</span>
                                 <TextInput
                                 id="dependents"
                                 name="dependents"

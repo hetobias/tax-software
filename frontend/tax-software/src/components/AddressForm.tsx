@@ -1,7 +1,10 @@
 import { Dropdown, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
 import { useState } from "react";
+import { useTranslation } from "react-i18next"
 
 export default function AddressForm() {
+
+    const { t, i18n } = useTranslation(['home', 'main']);
 
     const [streetAddress, setStreetAddress] = useState("");
     const [streetAddress2, setStreetAddress2] = useState("");
@@ -28,15 +31,15 @@ export default function AddressForm() {
         <GridContainer>
             <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px", padding: "2em"}}>
             <Form onSubmit={handleSubmit} large>
-                <Fieldset legend="Address" legendStyle="large" style={{minWidth: "25vw"}}>
+                <Fieldset legend={t("address", {ns: ['main', 'home']})} legendStyle="large" style={{minWidth: "25vw"}}>
                         <p>
-                            Required fields are marked with an asterisk (
+                            {t("requiredFields", {ns: ['main', 'home']})} (
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr>
                             ).
                         </p>
-                        <Label htmlFor="mailing-address-1">Street address{' '}
+                        <Label htmlFor="mailing-address-1">{t("streetAddress", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
@@ -48,7 +51,7 @@ export default function AddressForm() {
                             onChange={(e) => setStreetAddress(e.target.value)}
                              />
 
-                        <Label htmlFor="mailing-address-2">Street address line 2</Label>
+                        <Label htmlFor="mailing-address-2">{t("streetAddress2", {ns: ['main', 'home']})}</Label>
                         <TextInput 
                             id="mailing-address-2" 
                             name="mailing-address-2" 
@@ -58,7 +61,7 @@ export default function AddressForm() {
                              />
 
                         <Label htmlFor="city">
-                            City{' '}
+                        {t("city", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr>
@@ -73,7 +76,7 @@ export default function AddressForm() {
                              />
 
                         <Label htmlFor="state">
-                            State, territory, or military post{' '}
+                        {t("state", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr>
@@ -84,7 +87,7 @@ export default function AddressForm() {
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                             required>
-                            <option>- Select -</option>
+                            <option>- {t("select", {ns: ['main', 'home']})} -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -144,7 +147,7 @@ export default function AddressForm() {
                             <option value="AP">AP - Armed Forces Pacific</option>
                         </Dropdown>
 
-                        <Label htmlFor="zip">ZIP Code</Label>
+                        <Label htmlFor="zip">{t("zip", {ns: ['main', 'home']})}</Label>
                         <TextInput
                             id="zip"
                             name="zip"

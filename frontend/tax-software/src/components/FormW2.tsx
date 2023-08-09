@@ -1,5 +1,6 @@
 import { Button, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
 import { useState } from "react";
+import { useTranslation } from "react-i18next"
 
 interface FormW2Props {
     goBackToTaxChoice: () => void;
@@ -7,6 +8,8 @@ interface FormW2Props {
 
 export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
 
+    const { t, i18n } = useTranslation(['home', 'main']);
+    
     const [ein, setEin] = useState("");
     const [wagesTips, setWagesTips] = useState("");
     const [totalComp, setTotalComp] = useState("");
@@ -21,19 +24,19 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
     return (
         <>
         <div style={{display: "flex", justifyContent: "center"}}>
-            <Button type="button" size="big" accentStyle="warm" onClick={goBackToTaxChoice}>Go Back</Button>
+            <Button type="button" size="big" accentStyle="warm" onClick={goBackToTaxChoice}>{t("goBack", {ns: ['main', 'home']})}</Button>
         </div>
         <GridContainer>
             <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px", padding: "2em"}}>
               <Form onSubmit={handleSubmit} >
                 
-                    <Fieldset legend="W2 Form" legendStyle="large" style={{minWidth: "25vw"}}>
+                    <Fieldset legend={ "W2 " + t("form", {ns: ['main', 'home']})} legendStyle="large" style={{minWidth: "25vw"}}>
                         <div>
-                            <Label htmlFor="ein">EIN{' '}
+                            <Label htmlFor="ein">{t("signIn", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
-                            <span className="usa-hint">For example, 123456789</span>
+                            <span className="usa-hint">{t("forExample", {ns: ['main', 'home']}) + "123456789"}</span>
                             <TextInput 
                                 id="ein" 
                                 name="ein" 
@@ -45,8 +48,8 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         </div>
 
                         <div>
-                            <Label htmlFor="wagesTips">Wages, tips, or other compensation</Label>
-                            <span className="usa-hint">Please input a valid number</span>
+                            <Label htmlFor="wagesTips">{t("wagesTips", {ns: ['main', 'home']})}</Label>
+                            <span className="usa-hint">{t("inputValidNumber", {ns: ['main', 'home']})}</span>
                             <TextInput 
                                 id="wagesTips" 
                                 name="wagesTips" 
@@ -59,11 +62,11 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         </div>
 
                         <div>
-                            <Label htmlFor="totalComp">Total Compensation{' '}
+                            <Label htmlFor="totalComp">{t("totalComp", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
-                            <span className="usa-hint">Please input a valid number</span>
+                            <span className="usa-hint">{t("inputValidNumber", {ns: ['main', 'home']})}</span>
                             <TextInput 
                                 id="totalComp" 
                                 name="totalComp" 
@@ -76,11 +79,11 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         </div>
 
                         <div>
-                            <Label htmlFor="ssWithheld">Social Security Withheld{' '}
+                            <Label htmlFor="ssWithheld">{t("ssWithheld", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
-                            <span className="usa-hint">Please input a valid number</span>
+                            <span className="usa-hint">{t("inputValidNumber", {ns: ['main', 'home']})}</span>
                             <TextInput 
                                 id="ssWithheld" 
                                 name="ssWithheld" 
@@ -93,11 +96,11 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         </div>
 
                         <div>
-                            <Label htmlFor="medicareWithheld">Medicare Withheld{' '}
+                            <Label htmlFor="medicareWithheld">{t("medicareWithheld", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
-                            <span className="usa-hint">Please input a valid number</span>
+                            <span className="usa-hint">{t("inputValidNumber", {ns: ['main', 'home']})}</span>
                             <TextInput 
                                 id="medicareWithheld" 
                                 name="medicareWithheld" 
@@ -110,11 +113,11 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         </div>
 
                         <div>
-                            <Label htmlFor="federalTaxtotalComp">Federal Tax Withheld{' '}
+                            <Label htmlFor="federalTaxtotalComp">{t("federalTaxtotalComp", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
-                            <span className="usa-hint">Please input a valid number</span>
+                            <span className="usa-hint">{t("inputValidNumber", {ns: ['main', 'home']})}</span>
                             <TextInput 
                                 id="federalTaxtotalComp" 
                                 name="federalTaxtotalComp" 
@@ -127,7 +130,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         </div>
                     </Fieldset>
                     <br/>
-                    <Button type="button" accentStyle="cool" onClick={handleSubmit}>Submit</Button>
+                    <Button type="button" accentStyle="cool" onClick={handleSubmit}>{t("submit", {ns: ['main', 'home']})}</Button>
                 
                 </Form>
                 </div>
