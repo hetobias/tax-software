@@ -27,7 +27,8 @@ export default function HeaderComp() {
         <Button type="button" onClick={() => onClickLanguageChange("es")}>Spanish</Button>
         <Button type="button" onClick={() => onClickLanguageChange("ko")}>Korean</Button>
         <Button type="button" onClick={() => onClickLanguageChange("zh")}>Chinese</Button>
-        <Link to="/personal_information"><Button type="button">Personal Info</Button></Link>
+        <Link to="/personal_information"><Button type="button">Processing Page</Button></Link>
+        <Link to="/user"><Button type="button">User Page</Button></Link>
     </div>
     ]
   

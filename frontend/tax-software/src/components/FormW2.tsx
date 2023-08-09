@@ -32,7 +32,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         <div>
                             <Label htmlFor="wagesTips">Wages, tips, or other compensation</Label>
                             <span className="usa-hint">Please input a valid number</span>
-                            <TextInput id="wagesTips" name="wagesTips" type="text" prefix="$" style={{maxWidth: "15rem"}} />
+                            <TextInput id="wagesTips" name="wagesTips" type="text" placeholder="$" style={{maxWidth: "15rem"}} />
                         </div>
 
                         <div>
@@ -41,7 +41,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                             *
                             </abbr></Label>
                             <span className="usa-hint">Please input a valid number</span>
-                            <TextInput id="totalComp" name="totalComp" type="text" style={{maxWidth: "15rem"}}/>
+                            <TextInput id="totalComp" name="totalComp" type="text" placeholder="$" style={{maxWidth: "15rem"}}/>
                         </div>
 
                         <div>
@@ -50,7 +50,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                             *
                             </abbr></Label>
                             <span className="usa-hint">Please input a valid number</span>
-                            <TextInput id="ssWithheld" name="ssWithheld" type="text" style={{maxWidth: "15rem"}}/>
+                            <TextInput id="ssWithheld" name="ssWithheld" type="text" placeholder="$" style={{maxWidth: "15rem"}}/>
                         </div>
 
                         <div>
@@ -59,7 +59,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                             *
                             </abbr></Label>
                             <span className="usa-hint">Please input a valid number</span>
-                            <TextInput id="medicareWithheld" name="medicareWithheld" type="text" style={{maxWidth: "15rem"}}/>
+                            <TextInput id="medicareWithheld" name="medicareWithheld" type="text" placeholder="$" style={{maxWidth: "15rem"}}/>
                         </div>
 
                         <div>
@@ -68,9 +68,11 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                             *
                             </abbr></Label>
                             <span className="usa-hint">Please input a valid number</span>
-                            <TextInput id="federalTaxtotalComp" name="federalTaxtotalComp" type="text" style={{maxWidth: "15rem"}}/>
+                            <TextInput id="federalTaxtotalComp" name="federalTaxtotalComp" type="text" placeholder="$" style={{maxWidth: "15rem"}}/>
                         </div>
                     </Fieldset>
+                    <br/>
+                    <Button type="button" accentStyle="cool" onClick={handleSubmit}>Submit</Button>
                 
                 </Form>
                 </div>

@@ -17,8 +17,8 @@ export default function PersonalInfoForm() {
                         <StepIndicatorStep label="Personal information" status="current" />
                         <StepIndicatorStep label="Household status" />
                         <StepIndicatorStep label="Household income" />
-                        <StepIndicatorStep label="Signature" />
                         <StepIndicatorStep label="Review and submit" />
+                        <StepIndicatorStep label="Tax Estimate" />
                     </StepIndicator>
                 </div>
             </GridContainer>
@@ -33,7 +33,7 @@ export default function PersonalInfoForm() {
             <br/>
             <GridContainer>
                 <div style={{textAlign: "right"}}>
-                <Link to={"/household_status"}><Button type="button" size="big">Next</Button></Link>
+                <Link to={"/household_status"}><Button type="button" size="big">Submit and Next</Button></Link>
                 </div>
             </GridContainer>
             <FooterComp />

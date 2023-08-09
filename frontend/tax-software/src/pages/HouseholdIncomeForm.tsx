@@ -29,12 +29,12 @@ export default function HouseholdIncomeForm() {
                         <StepIndicatorStep label="Personal information" status="complete" />
                         <StepIndicatorStep label="Household status" status="complete" />
                         <StepIndicatorStep label="Household income" status="current" />
-                        <StepIndicatorStep label="Signature" />
                         <StepIndicatorStep label="Review and submit" />
+                        <StepIndicatorStep label="Tax Estimate" />
                     </StepIndicator>
                 </div>
             </GridContainer>
-            {selectedTaxChoice === null ? ( // Display TaxChoice component initially
+            {selectedTaxChoice === null ? (
                 <TaxChoice onTaxChoice={handleTaxChoice} />
             ) : selectedTaxChoice === "w2" ? (
                 <FormW2 goBackToTaxChoice={goBackToTaxChoice}/>
@@ -45,7 +45,7 @@ export default function HouseholdIncomeForm() {
             <br/>
             <GridContainer>
                 <Link to={"/household_status"}><Button type="button" size="big" style={{textAlign: "left"}}>Back</Button></Link>
-                <Link to={""}><Button type="button" size="big" style={{float: "right"}}>Next</Button></Link>
+                <Link to={"/review"}><Button type="button" size="big" style={{float: "right"}}>Next</Button></Link>
             </GridContainer>
             <FooterComp />
         </>

@@ -36,13 +36,15 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
                             *
                             </abbr></Label>
                             <span className="usa-hint">Please input a valid number</span>
-                            <TextInput id="totalComp" name="totalComp" type="text" style={{maxWidth: "15rem"}}/>
+                            <TextInput id="totalComp" name="totalComp" type="text" placeholder="$" style={{maxWidth: "15rem"}}/>
                         </div>
 
                     </Fieldset>
-                
+                    <br/>
+                    <Button type="button" accentStyle="cool" onClick={handleSubmit}>Submit</Button>
                 </Form>
                 </div>
+                
             </GridContainer>
         </>
     )

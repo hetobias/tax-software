@@ -25,7 +25,7 @@ export default function AddressForm() {
         <GridContainer>
             <div style={{backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "8px", padding: "2em"}}>
             <Form onSubmit={handleSubmit} large>
-                <Fieldset legend="Mailing address" legendStyle="large" style={{minWidth: "25vw"}}>
+                <Fieldset legend="Address" legendStyle="large" style={{minWidth: "25vw"}}>
                         <p>
                             Required fields are marked with an asterisk (
                             <abbr title="required" className="usa-hint usa-hint--required">
