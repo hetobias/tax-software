@@ -12,6 +12,12 @@ export default function FilingStatusForm() {
         setInputValue(newValue);
     }
 
+    const handleNoDependentChange = (value: any) => {
+        if (value === "no1") {
+            setInputValue("");
+        }
+    }
+
     return (
         <>
             <GridContainer>
@@ -89,7 +95,10 @@ export default function FilingStatusForm() {
                             label="No"
                             value="no1"
                             checked={selectedOption1 === "no1"}
-                            onChange={() => setSelectedOption1("no1")}
+                            onChange={() => {
+                                setSelectedOption1("no1");
+                                handleNoDependentChange("no1");
+                            }}
                             />
                         </div><br/>
 
