@@ -16,6 +16,7 @@ public class User {
   private String lastName;
   private Address address;
   private TaxInfo taxInfo;
+  private Calc calc;
 }
 
 @Data
@@ -52,4 +53,13 @@ class W2s {
   private double ssWithheld;
   private double medicareWithheld;
   private double federalTaxWithheld;
+}
+
+@Data
+@NoArgsConstructor
+class Calc {
+  private double totalWages;
+  private double ssTaxObligation;
+  private double medicareTaxObligation;
+  private double totalTaxReturn;
 }
