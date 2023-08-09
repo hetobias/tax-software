@@ -3,6 +3,8 @@ package com.skillstorm.taxsoftware.controller;
 import com.skillstorm.taxsoftware.model.User;
 import com.skillstorm.taxsoftware.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
 
   private final UserService userService;
@@ -26,6 +29,12 @@ public class UserController {
 
   @GetMapping("/{id}")
   public User getUserById(@PathVariable String id) {
+    User user = userService.getUserById(id).orElse(null);
+    if (user != null) {
+      log.info("Successfully retrieved user with ID: {}", id);
+    } else {
+      log.warn("User with ID: {} not found!", id);
+    }
     return userService.getUserById(id).orElse(null);
   }
 
@@ -42,6 +51,11 @@ public class UserController {
 
   @DeleteMapping("/{id}")
   public void deleteUser(@PathVariable String id) {
-    userService.deleteUser(id);
+    if (userService.existsById(id)) {
+      userService.deleteUser(id);
+      log.info("Successfully deleted user with ID: {}", id);
+    } else {
+      log.warn("User with ID: {} not found. Nothing to delete.", id);
+    }
   }
 }
