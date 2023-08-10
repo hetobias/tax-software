@@ -16,20 +16,33 @@ export default function HouseholdStatusForm() {
 
     const [singleOrMarried, setSingleOrMarried] = useState("");
     const [jointlyOrSingle, setJointlyOrSingle] = useState("");
-    const [isHeadofHousehold, setIsHeadofHousehold] = useState(false);
+    const [isHeadofHousehold, setIsHeadofHousehold] = useState(null);
     const [hasDependent, setHasDependent] = useState(false);
     const [dependentInputValue, setDependentInputValue] = useState("");
 
     const handleSubmit = () => {
-        setFormData(prevData => ({
-            ...prevData,
-            singleOrMarried,
-            jointlyOrSingle,
-            isHeadofHousehold,
-            hasDependent,
-            dependentInputValue
-        }));
+        if (!isFormValid()) {
+            setFormData(prevData => ({
+                ...prevData,
+                singleOrMarried,
+                jointlyOrSingle,
+                isHeadofHousehold,
+                hasDependent,
+                dependentInputValue
+            }));
+        } else {
+            console.log("Form is not valid. Please fill in all required fields.");
+        }
+
     }
+
+    const isFormValid = () => {
+        return (
+            singleOrMarried && jointlyOrSingle ||
+            singleOrMarried && isHeadofHousehold ||
+            singleOrMarried && isHeadofHousehold === false
+        );
+    };
 
 
     return (
@@ -63,7 +76,7 @@ export default function HouseholdStatusForm() {
             <GridContainer>
                 <Link to={"/personal_information"}><Button type="button" size="big" style={{textAlign: "left"}}>{t("back", {ns: ['main', 'home']})}</Button></Link>
                 <Link to={"/household_income"} 
-                      onClick={handleSubmit}><Button type="button" size="big" style={{float: "right"}}>{t("submitAndNext", {ns: ['main', 'home']})}</Button></Link>
+                      onClick={handleSubmit}><Button type="button" size="big" disabled={!isFormValid()} style={{float: "right"}}>{t("submitAndNext", {ns: ['main', 'home']})}</Button></Link>
     
             </GridContainer>
             <FooterComp />
