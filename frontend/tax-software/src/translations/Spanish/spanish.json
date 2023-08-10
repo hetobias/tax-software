@@ -75,6 +75,7 @@
 
     "taxEstimateHere" : "¡Aquí tiene su Estimación de Impuestos!",
     "totalWageEarned" : "Salario total ganado",
+    "totalTax" : "Impuesto total",
     "ssObligation" : "Obligación tributaria restante de la Seguridad Social",
     "medicareObligation" : "Obligación tributaria restante de Medicare",
     "taxObligation" : "Obligación tributaria federal pendiente",
