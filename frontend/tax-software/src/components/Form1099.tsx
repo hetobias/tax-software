@@ -1,6 +1,7 @@
 import { Button, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
 import { useState } from "react";
 import { useTranslation } from "react-i18next"
+import { useFormData } from "../FormDataContext";
 
 interface FormW2Props {
     goBackToTaxChoice: () => void;
@@ -10,13 +11,20 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
 
     const { t, i18n } = useTranslation(['home', 'main']);
 
+    const { formData, setFormData } = useFormData();
+
     const [ssnOrEin, setSsnOrEin] = useState("");
-    const [totalComp, setTotalComp] = useState("");
+    const [ten99TotalComp, setTen99TotalComp] = useState("");
 
     function handleSubmit() {
-        // event.preventDefault();
-
+       setFormData(prevData => ({
+        ...prevData,
+        ssnOrEin,
+        ten99TotalComp
+       }));
     }
+
+    console.log(formData);
 
     return (
         <>
@@ -54,8 +62,8 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
                                 name="totalComp" 
                                 type="text" 
                                 placeholder="$" 
-                                value={totalComp}
-                                onChange={(e) => setTotalComp(e.target.value)}
+                                value={ten99TotalComp}
+                                onChange={(e) => setTen99TotalComp(e.target.value)}
                                 style={{maxWidth: "15rem"}}/>
                         </div>
 

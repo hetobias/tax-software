@@ -7,6 +7,7 @@ import { useState } from "react";
 import FormW2 from "../components/FormW2";
 import Form1099 from "../components/Form1099";
 import { useTranslation } from "react-i18next";
+import { useFormData } from "../FormDataContext";
 
 export default function HouseholdIncomeForm() {
 

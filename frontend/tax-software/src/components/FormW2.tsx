@@ -1,6 +1,8 @@
 import { Button, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
 import { useState } from "react";
 import { useTranslation } from "react-i18next"
+import { useFormData } from "../FormDataContext";
+
 
 interface FormW2Props {
     goBackToTaxChoice: () => void;
@@ -9,16 +11,26 @@ interface FormW2Props {
 export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
 
     const { t, i18n } = useTranslation(['home', 'main']);
+
+    const { formData, setFormData } = useFormData();
     
     const [ein, setEin] = useState("");
     const [wagesTips, setWagesTips] = useState("");
-    const [totalComp, setTotalComp] = useState("");
+    const [w2TotalComp, setW2TotalComp] = useState("");
     const [ssWithheld, setSsWithheld] = useState("");
     const [medicareWithheld, setMedicareWithheld] = useState("");
     const [federalTaxWithheld, setFederalTaxWithheld] = useState("");
 
     function handleSubmit() {
-        // event.preventDefault();
+        setFormData(prevData => ({
+            ...prevData,
+            ein,
+            wagesTips,
+            w2TotalComp,
+            ssWithheld,
+            medicareWithheld,
+            federalTaxWithheld
+        }));
 
     }
     return (
@@ -72,8 +84,8 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                                 name="totalComp" 
                                 type="text" 
                                 placeholder="$" 
-                                value={totalComp}
-                                onChange={(e) => setTotalComp(e.target.value)}
+                                value={w2TotalComp}
+                                onChange={(e) => setW2TotalComp(e.target.value)}
                                 style={{maxWidth: "15rem"}}
                                 />
                         </div>

@@ -1,25 +1,31 @@
 import { Dropdown, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
-import { useState } from "react";
 import { useTranslation } from "react-i18next"
 
-export default function AddressForm() {
+export default function AddressForm({
+    streetAddress, 
+    setStreetAddress,
+    streetAddress2, 
+    setStreetAddress2,
+    state, 
+    setState,
+    city, 
+    setCity,
+    zip,
+    setZip
+}) {
 
     const { t, i18n } = useTranslation(['home', 'main']);
 
-    const [streetAddress, setStreetAddress] = useState("");
-    const [streetAddress2, setStreetAddress2] = useState("");
-    const [state, setState] = useState("");
-    const [city, setCity] = useState("");
-    const [zip, setZip] = useState("");
 
-    const handleCityChange = (event: any) => {
+
+    const handleCityChange = (event) => {
         const newValue = event.target.value.replace(/[0-9]/g, '');
-        setCity(newValue);
+        setCity(newValue);  // Using the destructured setters directly
     }
 
-    const handleZipChange = (event: any) => {
+    const handleZipChange = (event) => {
         const newValue = event.target.value.replace(/[^0-9]/g, '');
-        setZip(newValue);
+        setZip(newValue); // Using the destructured setters directly
     }
 
     function handleSubmit() {

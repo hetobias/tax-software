@@ -9,6 +9,7 @@ import HouseholdIncomeForm from './pages/HouseholdIncomeForm';
 import ReviewForm from './pages/ReviewForm';
 import TaxEstimateForm from './pages/TaxEstimateForm';
 import UserPage from './pages/UserPage';
+import { FormDataProvider } from './FormDataContext';
 
 
 export default function App() {
@@ -16,8 +17,9 @@ export default function App() {
 
     return (
         <div >
-            <Router>
-                <Routes>
+            <FormDataProvider>
+             <Router>
+                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/sign_in" element={<SignInForm />} />
                     <Route path="/create_account" element={<CreateAccountForm />} />
@@ -28,7 +30,8 @@ export default function App() {
                     <Route path="/tax_estimate" element={<TaxEstimateForm />} />
                     <Route path="/user" element={<UserPage />} />
                 </Routes>
-            </Router>
+             </Router>
+            </FormDataProvider>
         </div>
     );
 

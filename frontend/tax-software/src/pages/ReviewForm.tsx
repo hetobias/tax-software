@@ -3,10 +3,14 @@ import HeaderComp from "../components/HeaderComp";
 import { Link } from "react-router-dom";
 import FooterComp from "../components/FooterComp";
 import { useTranslation } from "react-i18next"
+import { useFormData } from "../FormDataContext";
+
 
 export default function ReviewForm() {
 
     const { t, i18n } = useTranslation(['home', 'main']);
+
+    const { formData } = useFormData();
 
     return (
         <>
@@ -43,21 +47,19 @@ export default function ReviewForm() {
                         <tbody>
                         <tr>
                             <th scope="row">{t("fullName", {ns: ['main', 'home']})}</th>
-                            <td>John A. Doe</td>
+                            <td>{`${formData.firstName} ${formData.middleName} ${formData.lastName}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("address", {ns: ['main', 'home']})}</th>
-                            <td>123 Main St. Springfield,
-                                IL, 12345
-                            </td>
+                            <td>{`${formData.streetAddress}, ${formData.streetAddress2}, ${formData.city}, ${formData.state} ${formData.zip}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("filingStatus", {ns: ['main', 'home']})}</th>
-                            <td>Single</td>
+                            <td>{formData.singleOrMarried}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("headOfHousehold", {ns: ['main', 'home']})}</th>
-                            <td>Yes</td>
+                            <td>{formData.isHeadofHousehold ? "Yes" : "No"}</td>
                         </tr>
                         </tbody>
                     </Table>
@@ -82,27 +84,27 @@ export default function ReviewForm() {
                         <tbody>
                         <tr>
                             <th scope="row">EIN</th>
-                            <td>123456789</td>
+                            <td>{formData.ein}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("wagesTips", {ns: ['main', 'home']})}</th>
-                            <td>$15,000</td>
+                            <td>${formData.wagesTips}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("totalComp", {ns: ['main', 'home']})}</th>
-                            <td>$70,000</td>
+                            <td>${formData.w2TotalComp}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("ssWithheld", {ns: ['main', 'home']})}</th>
-                            <td>$4,500</td>
+                            <td>${formData.ssWithheld}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("medicareWithheld", {ns: ['main', 'home']})}</th>
-                            <td>$1,200</td>
+                            <td>${formData.medicareWithheld}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("federalTaxWithheld", {ns: ['main', 'home']})}</th>
-                            <td>$5,500</td>
+                            <td>${formData.federalTaxWithheld}</td>
                         </tr>
                         </tbody>
                     </Table>
@@ -127,11 +129,11 @@ export default function ReviewForm() {
                         <tbody>
                         <tr>
                             <th scope="row">Social Security Number / EIN</th>
-                            <td>123-45-6789</td>
+                            <td>{formData.ssnOrEin}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("totalComp", {ns: ['main', 'home']})}</th>
-                            <td>$70,000</td>
+                            <td>${formData.ten99TotalComp}</td>
                         </tr>
                         </tbody>
                     </Table>

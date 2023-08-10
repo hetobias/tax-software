@@ -2,15 +2,11 @@ import { Fieldset, GridContainer, Radio, TextInput } from "@trussworks/react-usw
 import { useState } from "react";
 import { useTranslation } from "react-i18next"
 
-export default function FilingStatusForm() {
+export default function FilingStatusForm({ singleOrMarried, setSingleOrMarried, jointlyOrSingle, setJointlyOrSingle, isHeadofHousehold, setIsHeadofHousehold, hasDependent, setHasDependent, dependentInputValue, setDependentInputValue }) {
+
 
     const { t, i18n } = useTranslation(['home', 'main']);
 
-    const [singleOrMarried, setSingleOrMarried] = useState("");
-    const [jointlyOrSingle, setJointlyOrSingle] = useState("");
-    const [isHeadofHousehold, setIsHeadofHousehold] = useState(false);
-    const [hasDependent, setHasDependent] = useState(false);
-    const [dependentInputValue, setDependentInputValue] = useState("");
 
     const handleInputChange = (event: any) => {
         const newValue = event.target.value.replace(/[^0-9]/g, '').slice(0,2);
