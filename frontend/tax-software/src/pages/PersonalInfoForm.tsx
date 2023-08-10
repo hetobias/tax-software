@@ -26,18 +26,32 @@ export default function PersonalInfoForm() {
     const [zip, setZip] = useState("");
 
     const handleSubmit = () => {
-        setFormData({
-            ...formData, // This spreads the existing context data to preserve other fields
-            firstName,
-            middleName,
-            lastName,
-            streetAddress,
-            streetAddress2,
-            city,
-            state,
-            zip
-        });
+        if (!isFormValid()) {
+            setFormData({
+                ...formData, // This spreads the existing context data to preserve other fields
+                firstName,
+                middleName,
+                lastName,
+                streetAddress,
+                streetAddress2,
+                city,
+                state,
+                zip
+            });
+        }
+        
     }
+
+    const isFormValid = () => {
+        return (
+            firstName &&
+            lastName &&
+            streetAddress &&
+            city &&
+            state &&
+            zip
+        );
+    };
 
 
     return (
@@ -87,7 +101,7 @@ export default function PersonalInfoForm() {
                         to="/household_status"
                         onClick={handleSubmit}
                     >
-                        <Button type="button" size="big">
+                        <Button type="button" size="big" disabled={!isFormValid()}>
                             {t("submitAndNext", { ns: ['main', 'home'] })}
                         </Button>
                     </Link>        

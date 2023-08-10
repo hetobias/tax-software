@@ -153,7 +153,11 @@ export default function AddressForm({
                             <option value="AP">AP - Armed Forces Pacific</option>
                         </Dropdown>
 
-                        <Label htmlFor="zip">{t("zip", {ns: ['main', 'home']})}</Label>
+                        <Label htmlFor="zip">{t("zip", {ns: ['main', 'home']})}
+                        <abbr title="required" className="usa-hint usa-hint--required">
+                            *
+                        </abbr>
+                        </Label>
                         <TextInput
                             id="zip"
                             name="zip"
