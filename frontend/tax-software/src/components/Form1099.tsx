@@ -17,12 +17,25 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
     const [ten99TotalComp, setTen99TotalComp] = useState("");
 
     function handleSubmit() {
-       setFormData(prevData => ({
-        ...prevData,
-        ssnOrEin,
-        ten99TotalComp
-       }));
+        if(!isFormValid()) {
+            setFormData(prevData => ({
+                ...prevData,
+                ssnOrEin,
+                ten99TotalComp
+               }));
+               handleForm1099Completion();
+        }
+
     }
+
+    console.log(formData);
+
+    const isFormValid = () => {
+        return (
+            ssnOrEin &&
+            ten99TotalComp
+        );
+    };
 
     return (
         <>
@@ -67,7 +80,8 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
 
                     </Fieldset>
                     <br/>
-                    <Button type="button" accentStyle="cool" onClick={handleSubmit}>{t("submit", {ns: ['main', 'home']})}</Button>
+                    <Button type="button" accentStyle="cool" disabled={!isFormValid()}
+                            onClick={handleSubmit}>{t("submit", {ns: ['main', 'home']})}</Button>
                 </Form>
                 </div>
                 
