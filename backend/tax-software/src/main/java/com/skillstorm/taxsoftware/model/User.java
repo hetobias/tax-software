@@ -23,6 +23,7 @@ public class User {
 @NoArgsConstructor
 class Address {
   private String streetAddress;
+  private String streetAddress2;
   private String city;
   private String state;
   private String zipcode;

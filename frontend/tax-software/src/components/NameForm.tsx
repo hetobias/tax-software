@@ -1,15 +1,9 @@
 import { Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
-import { useState } from "react";
 import { useTranslation } from "react-i18next"
 
-export default function NameForm() {
+export default function NameForm({ firstName, setFirstName, middleName, setMiddleName, lastName, setLastName }) {
 
     const { t, i18n } = useTranslation(['home', 'main']);
-
-    const [firstName, setFirstName] = useState("");
-    const [middleName, setMiddleName] = useState("");
-    const [lastName, setLastName] = useState("");
-    
 
     function handleSubmit() {
         // event.preventDefault();
