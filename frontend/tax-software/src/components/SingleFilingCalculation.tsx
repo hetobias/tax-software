@@ -19,7 +19,6 @@ const SINGLE_FILING_BRACKETS: Record<string, number> = {
     SINGLE_BRACKET_35: 539900.00,
 };
 
-export default function SingleFilingCalculation() {
 
 const SOCIAL_SECURITY_MAX_WAGE = 142800.00;
 const MEDICARE_SURTAX_SINGLE = 200000;
@@ -31,7 +30,7 @@ const singleDeduction = 12950.00;
 const childTaxCredit = 2000.00;
 
 
-const calculateIncomeTax = (income: number) => {
+export function calculateIncomeTax(income: number): number {
     income = income - singleDeduction;
     let result = 0.0;
 
@@ -49,7 +48,7 @@ const calculateIncomeTax = (income: number) => {
 };
 
 // Calculate Social Security Tax
-const calculateSocialSecurityTax = (income: number): number => {
+export function calculateSocialSecurityTax(income: number): number {
     if (income >= SOCIAL_SECURITY_MAX_WAGE) {
         return SOCIAL_SECURITY_MAX_WAGE * SOCIAL_SECURITY_TAX_RATE;
     } else {
@@ -58,7 +57,7 @@ const calculateSocialSecurityTax = (income: number): number => {
 };
 
 // Calculate Medicare Tax
-const calculateMedicareTax = (income: number): number => {
+export function calculateMedicareTax(income: number): number {
     if (income <= MEDICARE_SURTAX_SINGLE) {
         return income * MEDICARE_TAX_RATE;
     } else {
@@ -67,17 +66,10 @@ const calculateMedicareTax = (income: number): number => {
 };
 
 // Calculate Total Tax
-const calculateTotalTax = (income: number): number => {
+export function calculateTotalTax(income: number): number {
     return (
         calculateIncomeTax(income) +
         calculateSocialSecurityTax(income) +
         calculateMedicareTax(income)
     );
 };
-
-return (
-    <>
-    
-    </>
-)
-}

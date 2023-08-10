@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TaxCalculator",
+      "request": "launch",
+      "mainClass": "TaxCalculator",
+      "projectName": ""
+    },
+    {
+      "type": "java",
       "name": "Spring Boot-TaxSoftwareApplication<tax-software>",
       "request": "launch",
       "cwd": "${workspaceFolder}",

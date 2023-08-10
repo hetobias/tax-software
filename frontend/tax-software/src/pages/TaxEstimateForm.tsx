@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import FooterComp from "../components/FooterComp";
 import { useTranslation } from "react-i18next"
 import { useState } from "react";
-import HeadOfHouseholdCalculation from "../components/HeadOfHouseholdCalculation";
-import SingleFilingCalculation from "../components/SingleFilingCalculation";
-import MarriedSeparateCalculation from "../components/MarriedSeparateCalculation";
-import MarriedJointCalculation from "../components/MarriedJointCalculation";
 
 export default function TaxEstimateForm() {
 
