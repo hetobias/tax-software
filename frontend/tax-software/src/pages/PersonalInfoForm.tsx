@@ -39,6 +39,17 @@ export default function PersonalInfoForm() {
         }));
     }
 
+    const isFormValid = () => {
+        return (
+            firstName &&
+            lastName &&
+            streetAddress &&
+            city &&
+            state &&
+            zip
+        );
+    };
+
 
     return (
         <>
@@ -87,7 +98,7 @@ export default function PersonalInfoForm() {
                         to="/household_status"
                         onClick={handleSubmit}
                     >
-                        <Button type="button" size="big">
+                        <Button type="button" size="big" disabled={!isFormValid()}>
                             {t("submitAndNext", { ns: ['main', 'home'] })}
                         </Button>
                     </Link>        
