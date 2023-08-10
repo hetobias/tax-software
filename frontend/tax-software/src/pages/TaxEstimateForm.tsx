@@ -3,11 +3,25 @@ import HeaderComp from "../components/HeaderComp";
 import { Link } from "react-router-dom";
 import FooterComp from "../components/FooterComp";
 import { useTranslation } from "react-i18next"
+import { useState } from "react";
+import HeadOfHouseholdCalculation from "../components/HeadOfHouseholdCalculation";
+import SingleFilingCalculation from "../components/SingleFilingCalculation";
+import MarriedSeparateCalculation from "../components/MarriedSeparateCalculation";
+import MarriedJointCalculation from "../components/MarriedJointCalculation";
 
 export default function TaxEstimateForm() {
 
     const { t, i18n } = useTranslation(['home', 'main']);
 
+    const [totalWageEarned, setTotalWageEarned] = useState<number>(0);
+    const [totalTax, setTotalTax] = useState<number>(0);
+    const [ssObligation, setSsObligation] = useState<number>(0);
+    const [medicareObligation, setMedicareObligation] = useState<number>(0);
+    const [taxObligation, setTaxObligation] = useState<number>(0);
+    const [totalTaxReturn, setTotalTaxReturn] = useState<number>(0);
+    
+
+    
     return (
         <>
             <HeaderComp />
@@ -43,7 +57,11 @@ export default function TaxEstimateForm() {
                                 <tbody>
                                 <tr>
                                     <th scope="row">{t("totalWageEarned", {ns: ['main', 'home']})}</th>
-                                    <td>$70,000</td>
+                                    <td>$ {totalWageEarned.toFixed(2)}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{t("totalTax", {ns: ['main', 'home']})}</th>
+                                    <td>$ {totalTax.toFixed(2)}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{t("ssObligation", {ns: ['main', 'home']})}</th>

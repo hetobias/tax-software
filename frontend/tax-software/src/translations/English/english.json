@@ -74,7 +74,8 @@
     "getTaxEstimate" : "Get Tax Estimate",
 
     "taxEstimateHere" : "Here are your Tax Estimates!",
-    "totalWageEarned" : "total Wage Earned",
+    "totalWageEarned" : "Total Wage Earned",
+    "totalTax" : "Total Tax",
     "ssObligation" : "Remaining Social Security Tax Obligation",
     "medicareObligation" : "Remaining Medicare Tax Obligation",
     "taxObligation" : "Remaining Federal Tax Obligation",

@@ -75,6 +75,7 @@
 
     "taxEstimateHere" : "这里是您的税务估算！",
     "totalWageEarned" : "工资总额",
+    "totalTax" : "总税额",
     "ssObligation" : "剩余社会保障税义务",
     "medicareObligation" : "剩余的医疗保险纳税义务",
     "taxObligation" : "剩余联邦税义务",
