@@ -83,47 +83,6 @@ export default function FilingStatusForm({ singleOrMarried, setSingleOrMarried, 
                                 />
                             </div>
                         )}
-
-                        <div>
-                            <h3>{t("hasDependentQuestion", {ns: ['main', 'home']})}</h3>
-                            <Radio
-                            id="yes1"
-                            name="dependents"
-                            label={t("yes", {ns: ['main', 'home']})}
-                            value="yes1"
-                            checked={hasDependent === true}
-                            onChange={() => setHasDependent(true)}
-                            />
-                            <Radio
-                            id="no1"
-                            name="dependents"
-                            label={t("no", {ns: ['main', 'home']})}
-                            value="no1"
-                            checked={hasDependent === false}
-                            onChange={() => {
-                                setHasDependent(false);
-                                handleNoDependentChange(false);
-                            }}
-                            />
-                        </div><br/>
-
-                        {hasDependent === true && (
-                            <div>
-                                <h3>{t("howManyDependentQuestion", {ns: ['main', 'home']})}</h3>
-                                <span className="usa-hint">{t("dependentExample", {ns: ['main', 'home']})}</span>
-                                <TextInput
-                                id="dependents"
-                                name="dependents"
-                                type="text"
-                                inputSize="medium"
-                                maxLength={2}
-                                value={dependentInputValue}
-                                onChange={handleInputChange}
-                                style={{maxWidth: "10rem"}}
-                                />
-                            </div>
-                        )}
-
                     
                     </Fieldset>
                 </div>
