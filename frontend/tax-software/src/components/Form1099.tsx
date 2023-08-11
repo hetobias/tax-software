@@ -24,8 +24,6 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
        }));
     }
 
-    console.log(formData);
-
     return (
         <>
         <div style={{display: "flex", justifyContent: "center"}}>

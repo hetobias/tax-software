@@ -1,5 +1,5 @@
-// Tax Rates
-const TAX_RATES: Record<string, number> = {
+// Constants for Tax Rates
+const TAX_RATES = {
     TAX_RATE_10: 0.10,
     TAX_RATE_12: 0.12,
     TAX_RATE_22: 0.22,
@@ -7,77 +7,63 @@ const TAX_RATES: Record<string, number> = {
     TAX_RATE_32: 0.32,
     TAX_RATE_35: 0.35,
     TAX_RATE_37: 0.37,
+
+    SOCIAL_SECURITY_MAX_WAGE: 142800.00,
+    MEDICARE_SURTAX_SINGLE: 200000,
+    MEDICARE_SURTAX_MARRIED: 250000,
+
+    SOCIAL_SECURITY_TAX_RATE: 0.062,
+    MEDICARE_TAX_RATE: 0.0145,
+    MEDICARE_ADDITIONAL_SURTAX_RATE: 0.009,
 };
 
-const MARRIED_SEPARATE_FILING_BRACKETS: Record<string, number> = {
-    // Married Separate Filing bracket
-    MARRIED_SEPARATE_BRACKET_10: 10275.00,
-    MARRIED_SEPARATE_BRACKET_12: 41775.00,
-    MARRIED_SEPARATE_BRACKET_22: 89075.00,
-    MARRIED_SEPARATE_BRACKET_24: 170050.00,
-    MARRIED_SEPARATE_BRACKET_32: 215950.00,
-    MARRIED_SEPARATE_BRACKET_35: 323925.00,
-};
+const MARRIED_SEPARATE_BRACKETS = [
+    0, 10275.00, 41775.00, 89075.00, 170050.00, 215950.00, 323925.00
+];
 
-export default function MarriedSeparateCalculation() {
+const MARRIED_SEPARATE_DEDUCTION = 12950.00;
 
-const SOCIAL_SECURITY_MAX_WAGE = 142800.00;
-const MEDICARE_SURTAX_SINGLE = 200000;
-const SOCIAL_SECURITY_TAX_RATE = 0.062;
-const MEDICARE_TAX_RATE = 0.0145;
-const MEDICARE_ADDITIONAL_SURTAX_RATE = 0.009;
-
-const marriedSeparateDeduction = 12950.00;
-const childTaxCredit = 2000.00;
-
-
-const calculateIncomeTax = (income: number) => {
-    income = income - marriedSeparateDeduction;
+export const calculateIncomeTaxMarriedSeparate = (income) => {
+    income -= MARRIED_SEPARATE_DEDUCTION;
     let result = 0.0;
 
-    for (let i = 1; i < Object.keys(MARRIED_SEPARATE_FILING_BRACKETS).length; i++) {
-        const bracketKey = `MARRIED_SEPARATE_FILING_BRACKET_${i}`;
-        if (income <= MARRIED_SEPARATE_FILING_BRACKETS[bracketKey]) {
-            result += (income - MARRIED_SEPARATE_FILING_BRACKETS[`MARRIED_SEPARATE_FILING_BRACKET_${i - 1}`]) * TAX_RATES[`TAX_RATE_${i - 1}`];
+    const rates = [
+        TAX_RATES.TAX_RATE_10,
+        TAX_RATES.TAX_RATE_12,
+        TAX_RATES.TAX_RATE_22,
+        TAX_RATES.TAX_RATE_24,
+        TAX_RATES.TAX_RATE_32,
+        TAX_RATES.TAX_RATE_35,
+        TAX_RATES.TAX_RATE_37
+    ];
+
+    for (let i = 1; i < MARRIED_SEPARATE_BRACKETS.length; i++) {
+        if (income <= MARRIED_SEPARATE_BRACKETS[i]) {
+            result += (income - MARRIED_SEPARATE_BRACKETS[i - 1]) * rates[i - 1];
             break;
         } else {
-            result += (MARRIED_SEPARATE_FILING_BRACKETS[bracketKey] - MARRIED_SEPARATE_FILING_BRACKETS[`MARRIED_SEPARATE_FILING_BRACKET_${i - 1}`]) * TAX_RATES[`TAX_RATE_${i - 1}`];
+            result += (MARRIED_SEPARATE_BRACKETS[i] - MARRIED_SEPARATE_BRACKETS[i - 1]) * rates[i - 1];
         }
     }
-
     return result;
 };
 
-// Calculate Social Security Tax
-const calculateSocialSecurityTax = (income: number): number => {
-    if (income >= SOCIAL_SECURITY_MAX_WAGE) {
-        return SOCIAL_SECURITY_MAX_WAGE * SOCIAL_SECURITY_TAX_RATE;
+export const calculateSocialSecurityTaxMarriedSeparate = (income) => {
+    if (income >= TAX_RATES.SOCIAL_SECURITY_MAX_WAGE) {
+        return TAX_RATES.SOCIAL_SECURITY_MAX_WAGE * TAX_RATES.SOCIAL_SECURITY_TAX_RATE;
     } else {
-        return income * SOCIAL_SECURITY_TAX_RATE;
+        return income * TAX_RATES.SOCIAL_SECURITY_TAX_RATE;
     }
 };
 
-// Calculate Medicare Tax
-const calculateMedicareTax = (income: number): number => {
-    if (income <= MEDICARE_SURTAX_SINGLE) {
-        return income * MEDICARE_TAX_RATE;
+export const calculateMedicareTaxMarriedSeparate = (income) => {
+    if (income <= TAX_RATES.MEDICARE_SURTAX_SINGLE) {
+        return income * TAX_RATES.MEDICARE_TAX_RATE;
     } else {
-        return MEDICARE_ADDITIONAL_SURTAX_RATE * (income - MEDICARE_SURTAX_SINGLE);
+        return TAX_RATES.MEDICARE_ADDITIONAL_SURTAX_RATE * (income - TAX_RATES.MEDICARE_SURTAX_SINGLE);
     }
 };
 
-// Calculate Total Tax
-const calculateTotalTax = (income: number): number => {
-    return (
-        calculateIncomeTax(income) +
-        calculateSocialSecurityTax(income) +
-        calculateMedicareTax(income)
-    );
+export const calculateTotalTaxMarriedSeparate = (income) => {
+    return calculateIncomeTaxMarriedSeparate(income) + calculateSocialSecurityTaxMarriedSeparate(income) + calculateMedicareTaxMarriedSeparate(income);
 };
-
-return (
-    <>
-    
-    </>
-)
-}
