@@ -37,6 +37,16 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
         );
     };
 
+    const handleSsnOrEinChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setSsnOrEin(newValue); // Using the destructured setters directly
+    }
+
+    const handleTen99TotalCompChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setTen99TotalComp(newValue); // Using the destructured setters directly
+    }
+
     return (
         <>
         <div style={{display: "flex", justifyContent: "center"}}>
@@ -58,7 +68,7 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
                                 name="ein" 
                                 type="text" 
                                 value={ssnOrEin}
-                                onChange={(e) => setSsnOrEin(e.target.value)}
+                                onChange={handleSsnOrEinChange}
                                 style={{maxWidth: "20rem"}} />
                         </div>
 
@@ -74,7 +84,7 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
                                 type="text" 
                                 placeholder="$" 
                                 value={ten99TotalComp}
-                                onChange={(e) => setTen99TotalComp(e.target.value)}
+                                onChange={handleTen99TotalCompChange}
                                 style={{maxWidth: "15rem"}}/>
                         </div>
 
