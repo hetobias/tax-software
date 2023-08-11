@@ -32,7 +32,6 @@ class Address {
 @Data
 @NoArgsConstructor
 class TaxInfo {
-  private int dependents;
   private String filingStatus;
   private Form1099 Form1099;
   private W2s W2s;
@@ -60,7 +59,10 @@ class W2s {
 @NoArgsConstructor
 class Calc {
   private double totalWages;
+  private double totalTax;
   private double ssTaxObligation;
   private double medicareTaxObligation;
+  private double federalTaxObligation;
+  private double totalTaxOwed;
   private double totalTaxReturn;
 }

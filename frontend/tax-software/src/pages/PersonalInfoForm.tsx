@@ -26,8 +26,8 @@ export default function PersonalInfoForm() {
     const [zip, setZip] = useState("");
 
     const handleSubmit = () => {
-        setFormData({
-            ...formData, // This spreads the existing context data to preserve other fields
+        setFormData(prevData =>({
+            ...prevData, // This spreads the existing context data to preserve other fields
             firstName,
             middleName,
             lastName,
@@ -36,7 +36,7 @@ export default function PersonalInfoForm() {
             city,
             state,
             zip
-        });
+        }));
     }
 
 

@@ -3,23 +3,46 @@ import HeaderComp from "../components/HeaderComp";
 import { Link } from "react-router-dom";
 import FooterComp from "../components/FooterComp";
 import { useTranslation } from "react-i18next"
-import { useState } from "react";
-import HeadOfHouseholdCalculation from "../components/HeadOfHouseholdCalculation";
-import SingleFilingCalculation from "../components/SingleFilingCalculation";
-import MarriedSeparateCalculation from "../components/MarriedSeparateCalculation";
-import MarriedJointCalculation from "../components/MarriedJointCalculation";
+import { useEffect, useState } from "react";
+import { useFormData } from "../FormDataContext";
+import axios from 'axios';
+
+
 
 export default function TaxEstimateForm() {
 
     const { t, i18n } = useTranslation(['home', 'main']);
 
-    const [totalWageEarned, setTotalWageEarned] = useState<number>(0);
-    const [totalTax, setTotalTax] = useState<number>(0);
-    const [ssObligation, setSsObligation] = useState<number>(0);
-    const [medicareObligation, setMedicareObligation] = useState<number>(0);
-    const [taxObligation, setTaxObligation] = useState<number>(0);
-    const [totalTaxReturn, setTotalTaxReturn] = useState<number>(0);
+    const { formData } = useFormData();
+    const [matchingUser, setMatchingUsers] = useState(null);
+
+    console.log(formData.ein);
+
+
+    const fetchAndLogMatchingUser = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/api/users');
+            const users = response.data;
     
+            // Filter users by EIN
+            const matchingUsers = users.filter(user => 
+                user.taxInfo && 
+                user.taxInfo.w2s && 
+                user.taxInfo.w2s.ein === formData.ein
+            );
+            
+            setMatchingUsers(matchingUsers[0]);
+            console.log(matchingUsers[0].calc);
+    
+        } catch (error) {
+            console.error("There was an error fetching the users:", error);
+        }
+    }
+
+    useEffect(() => {
+        // Fetch and log matching user when the component mounts
+        fetchAndLogMatchingUser();
+    }, []);  // Empty dependency array ensures this useEffect runs once when the component mounts
 
     
     return (
@@ -57,27 +80,31 @@ export default function TaxEstimateForm() {
                                 <tbody>
                                 <tr>
                                     <th scope="row">{t("totalWageEarned", {ns: ['main', 'home']})}</th>
-                                    <td>$ {totalWageEarned.toFixed(2)}</td>
+                                    <td>${matchingUser && matchingUser.calc ? matchingUser.calc.totalWages.toFixed(2) : "Loading..."}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{t("totalTax", {ns: ['main', 'home']})}</th>
-                                    <td>$ {totalTax.toFixed(2)}</td>
+                                    <td>${matchingUser && matchingUser.calc ? matchingUser.calc.totalTax.toFixed(2) : "Loading..."}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{t("ssObligation", {ns: ['main', 'home']})}</th>
-                                    <td>$0</td>
+                                    <td>${matchingUser && matchingUser.calc ? matchingUser.calc.ssTaxObligation.toFixed(2) : "Loading..."}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{t("medicareObligation", {ns: ['main', 'home']})}</th>
-                                    <td>$0</td>
+                                    <td>${matchingUser && matchingUser.calc ? matchingUser.calc.medicareTaxObligation.toFixed(2) :"Loading..."}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{t("taxObligation", {ns: ['main', 'home']})}</th>
-                                    <td>$5000</td>
+                                    <td>${matchingUser && matchingUser.calc ? matchingUser.calc.federalTaxObligation.toFixed(2) : "Loading..."}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{t("totalTaxOwed", {ns: ['main', 'home']})}</th>
+                                    <td>${matchingUser && matchingUser.calc ? matchingUser.calc.totalTaxOwed.toFixed(2) : "Loading..."}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">{t("totalTaxReturn", {ns: ['main', 'home']})}</th>
-                                    <td>$400</td>
+                                    <td>${matchingUser && matchingUser.calc ? matchingUser.calc.totalTaxReturn.toFixed(2) : "Loading..."}</td>
                                 </tr>
                                 </tbody>
                             </Table>
