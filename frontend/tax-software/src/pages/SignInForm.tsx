@@ -60,7 +60,7 @@ export default function SignInForm() {
                         </p>
                         </div>
                 
-                        <Button type="submit">{t("signIn", {ns: ['main', 'home']})}</Button>
+                        <Link to="/personal_information"><Button type="submit">{t("signIn", {ns: ['main', 'home']})}</Button></Link>
 
                         </Fieldset>
                     </Form>
