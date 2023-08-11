@@ -47,6 +47,37 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
         );
     };
 
+    const handleEinChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setEin(newValue); // Using the destructured setters directly
+    }
+
+    const handleWagesTipsChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setWagesTips(newValue); // Using the destructured setters directly
+    }
+
+    const handleW2TotalCompChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setW2TotalComp(newValue); // Using the destructured setters directly
+    }
+
+    const handleSsWithheldChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setSsWithheld(newValue); // Using the destructured setters directly
+    }
+
+    const handleMedicareWithheldChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setMedicareWithheld(newValue); // Using the destructured setters directly
+    }
+
+    const handleFederalTaxWithheldChange = (event) => {
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setFederalTaxWithheld(newValue); // Using the destructured setters directly
+    }
+
+
     return (
         <>
         <div style={{display: "flex", justifyContent: "center"}}>
@@ -68,7 +99,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                                 name="ein" 
                                 type="text" 
                                 value={ein}
-                                onChange={(e) => setEin(e.target.value)}
+                                onChange={handleEinChange}
                                 style={{maxWidth: "20rem"}}
                                  />
                         </div>
@@ -82,7 +113,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                                 type="text" 
                                 placeholder="$" 
                                 value={wagesTips}
-                                onChange={(e) => setWagesTips(e.target.value)}
+                                onChange={handleWagesTipsChange}
                                 style={{maxWidth: "15rem"}}
                                  />
                         </div>
@@ -99,7 +130,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                                 type="text" 
                                 placeholder="$" 
                                 value={w2TotalComp}
-                                onChange={(e) => setW2TotalComp(e.target.value)}
+                                onChange={handleW2TotalCompChange}
                                 style={{maxWidth: "15rem"}}
                                 />
                         </div>
@@ -116,7 +147,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                                 type="text" 
                                 placeholder="$" 
                                 value={ssWithheld}
-                                onChange={(e) => setSsWithheld(e.target.value)}
+                                onChange={handleSsWithheldChange}
                                 style={{maxWidth: "15rem"}}
                                 />
                         </div>
@@ -133,7 +164,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                                 type="text" 
                                 placeholder="$" 
                                 value={medicareWithheld}
-                                onChange={(e) => setMedicareWithheld(e.target.value)}
+                                onChange={handleMedicareWithheldChange}
                                 style={{maxWidth: "15rem"}}
                                 />
                         </div>
@@ -150,7 +181,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                                 type="text" 
                                 placeholder="$" 
                                 value={federalTaxWithheld}
-                                onChange={(e) => setFederalTaxWithheld(e.target.value)}
+                                onChange={handleFederalTaxWithheldChange}
                                 style={{maxWidth: "15rem"}}
                                 />
                         </div>
