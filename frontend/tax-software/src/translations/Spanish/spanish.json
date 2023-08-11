@@ -80,5 +80,6 @@
     "medicareObligation" : "Obligación tributaria restante de Medicare",
     "taxObligation" : "Obligación tributaria federal pendiente",
     "totalTaxReturn" : "Total Tax Return",
-    "backToUser" : "Volver a la página de usuario"
+    "backToUser" : "Volver a la página de usuario",
+    "totalTaxOwed" : "Impuesto total adeudado"
 }

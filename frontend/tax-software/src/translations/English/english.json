@@ -79,6 +79,7 @@
     "ssObligation" : "Remaining Social Security Tax Obligation",
     "medicareObligation" : "Remaining Medicare Tax Obligation",
     "taxObligation" : "Remaining Federal Tax Obligation",
+    "totalTaxOwed" : "Total Tax Owed",
     "totalTaxReturn" : "Total Tax Return",
     "backToUser" : "Go Back to User Page"
 }

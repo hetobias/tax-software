@@ -80,5 +80,6 @@
     "medicareObligation" : "剩余的医疗保险纳税义务",
     "taxObligation" : "剩余联邦税义务",
     "totalTaxReturn" : "总报税表",
-    "backToUser" : "返回到用户页面"
+    "backToUser" : "返回到用户页面",
+    "totalTaxOwed" : "欠税总额"
 }

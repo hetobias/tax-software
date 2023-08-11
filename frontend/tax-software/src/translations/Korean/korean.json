@@ -80,5 +80,6 @@
     "medicareObligation" : "남은 메디케어 세금 의무",
     "taxObligation" : "남은 연방 세금 의무",
     "totalTaxReturn" : "총 세금 환급",
-    "backToUser" : "사용자 페이지로 돌아가기"
+    "backToUser" : "사용자 페이지로 돌아가기",
+    "totalTaxOwed" : "총 납부할 세금"
 }
