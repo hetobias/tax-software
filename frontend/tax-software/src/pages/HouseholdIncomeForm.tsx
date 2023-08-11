@@ -14,6 +14,16 @@ export default function HouseholdIncomeForm() {
     const { t, i18n } = useTranslation(['home', 'main']);
 
     const [selectedTaxChoice, setSelectedTaxChoice] = useState<string | null>(null);
+    const [isFormW2Completed, setIsFormW2Completed] = useState(false);
+    const [isForm1099Completed, setIsForm1099Completed] = useState(false);
+
+    const handleFormW2Completion = () => {
+        setIsFormW2Completed(true);
+    };
+    
+    const handleForm1099Completion = () => {
+        setIsForm1099Completed(true);
+    };
 
     const handleTaxChoice = (choice: string) => {
         setSelectedTaxChoice(choice);
@@ -22,6 +32,8 @@ export default function HouseholdIncomeForm() {
     const goBackToTaxChoice = () => {
         setSelectedTaxChoice(null);
     }
+
+
 
     return (
         <>
@@ -41,15 +53,19 @@ export default function HouseholdIncomeForm() {
             {selectedTaxChoice === null ? (
                 <TaxChoice onTaxChoice={handleTaxChoice} />
             ) : selectedTaxChoice === "w2" ? (
-                <FormW2 goBackToTaxChoice={goBackToTaxChoice}/>
+                <FormW2 
+                    goBackToTaxChoice={goBackToTaxChoice}
+                    onFormW2Complete={handleFormW2Completion}/>
             ) : (
-                <Form1099 goBackToTaxChoice={goBackToTaxChoice}/>
+                <Form1099 
+                    goBackToTaxChoice={goBackToTaxChoice}
+                    onForm1099Complete={handleForm1099Completion}/>
             )}
 
             <br/>
             <GridContainer>
                 <Link to={"/household_status"}><Button type="button" size="big" style={{textAlign: "left"}}>{t("back", {ns: ['main', 'home']})}</Button></Link>
-                <Link to={"/review"}><Button type="button" size="big" style={{float: "right"}}>{t("next", {ns: ['main', 'home']})}</Button></Link>
+                <Link to={"/review"}><Button type="button" size="big" disabled={!isFormW2Completed && !isForm1099Completed} style={{float: "right"}}>{t("next", {ns: ['main', 'home']})}</Button></Link>
             </GridContainer>
             <FooterComp />
         </>

@@ -22,17 +22,31 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
     const [federalTaxWithheld, setFederalTaxWithheld] = useState("");
 
     function handleSubmit() {
-        setFormData(prevData => ({
-            ...prevData,
-            ein,
-            wagesTips,
-            w2TotalComp,
-            ssWithheld,
-            medicareWithheld,
-            federalTaxWithheld
-        }));
-
+        if(!isFormValid()) {
+            setFormData(prevData => ({
+                ...prevData,
+                ein,
+                wagesTips,
+                w2TotalComp,
+                ssWithheld,
+                medicareWithheld,
+                federalTaxWithheld
+            }));
+            isFormW2Completed(true);
+        }
+        
     }
+
+    const isFormValid = () => {
+        return (
+            ein &&
+            w2TotalComp &&
+            ssWithheld &&
+            medicareWithheld &&
+            federalTaxWithheld
+        );
+    };
+
     return (
         <>
         <div style={{display: "flex", justifyContent: "center"}}>
@@ -142,7 +156,8 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                         </div>
                     </Fieldset>
                     <br/>
-                    <Button type="button" accentStyle="cool" onClick={handleSubmit}>{t("submit", {ns: ['main', 'home']})}</Button>
+                    <Button type="button" accentStyle="cool" disabled={!isFormValid()}
+                            onClick={handleSubmit}>{t("submit", {ns: ['main', 'home']})}</Button>
                 
                 </Form>
                 </div>
