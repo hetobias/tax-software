@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, GridContainer, StepIndicator, StepIndicatorStep, Table } from "@trussworks/react-uswds";
 import HeaderComp from "../components/HeaderComp";
 import { Link } from "react-router-dom";
@@ -21,7 +22,7 @@ export default function TaxEstimateForm() {
 
     const fetchAndLogMatchingUser = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/users');
+            const response = await axios.get('http://34.224.85.219:8080/api/users');
             const users = response.data;
     
             // Filter users by EIN
@@ -32,7 +33,6 @@ export default function TaxEstimateForm() {
             );
             
             setMatchingUsers(matchingUsers[0]);
-            console.log(matchingUsers[0].calc);
     
         } catch (error) {
             console.error("There was an error fetching the users:", error);

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Address, Button, Footer, GridContainer, Logo, ProcessList, ProcessListHeading, ProcessListItem } from "@trussworks/react-uswds"
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"

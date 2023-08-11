@@ -1,0 +1,33 @@
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+// @ts-nocheck
+import { GridContainer, Table } from "@trussworks/react-uswds";
+import HeaderComp from "../components/HeaderComp";
+import { useTranslation } from "react-i18next";
+import FooterComp from "../components/FooterComp";
+import { useFormData } from "../FormDataContext";
+import { useEffect, useState } from "react";
+import axios from "axios";
+export default function UserPage() {
+    const { t, i18n } = useTranslation(['home', 'main']);
+    const { formData } = useFormData();
+    const [matchingUser, setMatchingUsers] = useState(null);
+    const fetchAndLogMatchingUser = async () => {
+        try {
+            const response = await axios.get('http://34.224.85.219:8080/api/users');
+            const users = response.data;
+            // Filter users by EIN
+            const matchingUsers = users.filter(user => user.taxInfo &&
+                user.taxInfo.w2s &&
+                user.taxInfo.w2s.ein === formData.ein);
+            setMatchingUsers(matchingUsers[0]);
+        }
+        catch (error) {
+            console.error("There was an error fetching the users:", error);
+        }
+    };
+    useEffect(() => {
+        // Fetch and log matching user when the component mounts
+        fetchAndLogMatchingUser();
+    }, []); // Empty dependency array ensures this useEffect runs once when the component mounts
+    return (_jsxs(_Fragment, { children: [_jsx(HeaderComp, {}), _jsx("br", {}), _jsxs(GridContainer, { children: [_jsx("h1", { style: { textAlign: "center" }, children: "Welcome to your User Page!" }), _jsx("br", {})] }), _jsx(GridContainer, { children: _jsxs(Table, { striped: true, caption: t("personalInfo", { ns: ['main', 'home'] }) + " & " + t("filingStatus", { ns: ['main', 'home'] }), fullWidth: true, fixed: true, className: "bg-accent-cool-light", children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { scope: "col", children: t("fields", { ns: ['main', 'home'] }) }), _jsx("th", { scope: "col", children: t("infoInput", { ns: ['main', 'home'] }) })] }) }), _jsxs("tbody", { children: [_jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("firstName", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.firstName : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("middleName", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.middleName : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("lastName", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.lastName : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("streetAddress", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.address.streetAddress : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("streetAddress2", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.address.streetAddress2 : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("city", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.address.city : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("state", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.address.state : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("zip", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.address.zipcode : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("filingStatus", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.taxInfo.filingStatus : "Loading..."}` })] })] })] }) }), _jsx("br", {}), _jsx("br", {}), _jsx(GridContainer, { children: _jsxs(Table, { striped: true, caption: "W2 " + t("form", { ns: ['main', 'home'] }), fullWidth: true, fixed: true, className: "bg-accent-warm-light", children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { scope: "col", children: t("fields", { ns: ['main', 'home'] }) }), _jsx("th", { scope: "col", children: t("infoInput", { ns: ['main', 'home'] }) })] }) }), _jsxs("tbody", { children: [_jsxs("tr", { children: [_jsx("th", { scope: "row", children: "EIN" }), _jsx("td", { children: `${matchingUser ? matchingUser.taxInfo.w2s.ein : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("wagesTips", { ns: ['main', 'home'] }) }), _jsxs("td", { children: ["$", `${matchingUser ? matchingUser.taxInfo.w2s.wagesTips : "Loading..."}`] })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("totalComp", { ns: ['main', 'home'] }) }), _jsxs("td", { children: ["$", `${matchingUser ? matchingUser.taxInfo.w2s.totalComp : "Loading..."}`] })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("ssWithheld", { ns: ['main', 'home'] }) }), _jsxs("td", { children: ["$", `${matchingUser ? matchingUser.taxInfo.w2s.ssWithheld : "Loading..."}`] })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("medicareWithheld", { ns: ['main', 'home'] }) }), _jsxs("td", { children: ["$", `${matchingUser ? matchingUser.taxInfo.w2s.medicareWithheld : "Loading..."}`] })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("federalTaxWithheld", { ns: ['main', 'home'] }) }), _jsxs("td", { children: ["$", `${matchingUser ? matchingUser.taxInfo.w2s.federalTaxWithheld : "Loading..."}`] })] })] })] }) }), _jsx("br", {}), _jsx("br", {}), _jsx(GridContainer, { children: _jsxs(Table, { striped: true, caption: "1099 " + t("form", { ns: ['main', 'home'] }), fullWidth: true, fixed: true, className: "bg-accent-warm", children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { scope: "col", children: t("fields", { ns: ['main', 'home'] }) }), _jsx("th", { scope: "col", children: t("infoInput", { ns: ['main', 'home'] }) })] }) }), _jsxs("tbody", { children: [_jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("socialSecurityEin", { ns: ['main', 'home'] }) }), _jsx("td", { children: `${matchingUser ? matchingUser.taxInfo.form1099.ssnOrEin : "Loading..."}` })] }), _jsxs("tr", { children: [_jsx("th", { scope: "row", children: t("totalComp", { ns: ['main', 'home'] }) }), _jsxs("td", { children: ["$", `${matchingUser ? matchingUser.taxInfo.form1099.totalComp : "Loading..."}`] })] })] })] }) }), _jsx(FooterComp, {})] }));
+}

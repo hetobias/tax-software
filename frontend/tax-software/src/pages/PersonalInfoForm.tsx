@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { Button, GridContainer, StepIndicator, StepIndicatorStep } from "@trussworks/react-uswds";
 import HeaderComp from "../components/HeaderComp";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, GridContainer, StepIndicator, StepIndicatorStep } from "@trussworks/react-uswds";
 import HeaderComp from "../components/HeaderComp";
 import FilingStatusForm from "../components/FilingStatusForm";

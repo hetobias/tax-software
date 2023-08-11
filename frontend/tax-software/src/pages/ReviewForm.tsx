@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, Fieldset, GridContainer, StepIndicator, StepIndicatorStep, Table } from "@trussworks/react-uswds";
 import HeaderComp from "../components/HeaderComp";
 import { Link } from "react-router-dom";
@@ -181,7 +182,7 @@ export default function ReviewForm() {
                 }
             };
     
-            const response = await axios.post('http://localhost:8080/api/users', user);
+            const response = await axios.post('http://34.224.85.219:8080/api/users', user);
             console.log(response.data);
         } catch (error) {
             console.error("Error submitting the data:", error);

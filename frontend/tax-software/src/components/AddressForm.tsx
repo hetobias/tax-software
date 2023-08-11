@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Dropdown, Fieldset, Form, GridContainer, Label, TextInput } from "@trussworks/react-uswds";
 import { useTranslation } from "react-i18next"
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, GridContainer } from "@trussworks/react-uswds";
 import { useTranslation } from "react-i18next"
 

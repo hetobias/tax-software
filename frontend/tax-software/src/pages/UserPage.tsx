@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, GridContainer, StepIndicator, StepIndicatorStep, Table } from "@trussworks/react-uswds";
 import HeaderComp from "../components/HeaderComp";
 import { Link } from "react-router-dom";
@@ -16,7 +17,7 @@ export default function UserPage() {
 
     const fetchAndLogMatchingUser = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/users');
+            const response = await axios.get('http://34.224.85.219:8080/api/users');
             const users = response.data;
     
             // Filter users by EIN

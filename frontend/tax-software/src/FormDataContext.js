@@ -1,12 +1,10 @@
+import { jsx as _jsx } from "react/jsx-runtime";
 // @ts-nocheck
-import React, { createContext, useContext, useState } from 'react';
-
+import { createContext, useContext, useState } from 'react';
 const FormDataContext = createContext();
-
 export const useFormData = () => {
     return useContext(FormDataContext);
-}
-
+};
 export const FormDataProvider = ({ children }) => {
     const [formData, setFormData] = useState({
         //personal info
@@ -35,10 +33,5 @@ export const FormDataProvider = ({ children }) => {
         ssnOrEin: '',
         ten99TotalComp: ''
     });
-
-    return (
-        <FormDataContext.Provider value={{ formData, setFormData }}>
-            {children}
-        </FormDataContext.Provider>
-    );
-}
+    return (_jsx(FormDataContext.Provider, { value: { formData, setFormData }, children: children }));
+};
