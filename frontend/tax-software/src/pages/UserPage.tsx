@@ -4,11 +4,39 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next"
 import FooterComp from "../components/FooterComp";
 import { useFormData } from "../FormDataContext";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function UserPage() {
 
     const { t, i18n } = useTranslation(['home', 'main']);
     const { formData } = useFormData();
+    
+    const [matchingUser, setMatchingUsers] = useState(null);
+
+    const fetchAndLogMatchingUser = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/api/users');
+            const users = response.data;
+    
+            // Filter users by EIN
+            const matchingUsers = users.filter(user => 
+                user.taxInfo && 
+                user.taxInfo.w2s && 
+                user.taxInfo.w2s.ein === formData.ein
+            );
+            
+            setMatchingUsers(matchingUsers[0]);
+    
+        } catch (error) {
+            console.error("There was an error fetching the users:", error);
+        }
+    }
+
+    useEffect(() => {
+        // Fetch and log matching user when the component mounts
+        fetchAndLogMatchingUser();
+    }, []);  // Empty dependency array ensures this useEffect runs once when the component mounts
 
     return (
         <>
@@ -34,20 +62,40 @@ export default function UserPage() {
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row">{t("fullName", {ns: ['main', 'home']})}</th>
-                            <td>{`${formData.firstName} ${formData.middleName} ${formData.lastName}`}</td>
+                            <th scope="row">{t("firstName", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.firstName : "Loading..."}`}</td>
                         </tr>
                         <tr>
-                            <th scope="row">{t("address", {ns: ['main', 'home']})}</th>
-                            <td>{`${formData.streetAddress}, ${formData.streetAddress2}, ${formData.city}, ${formData.state} ${formData.zip}`}</td>
+                            <th scope="row">{t("middleName", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.middleName : "Loading..."}`}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{t("lastName", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.lastName : "Loading..."}`}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{t("streetAddress", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.address.streetAddress : "Loading..."}`}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{t("streetAddress2", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.address.streetAddress2 : "Loading..."}`}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{t("city", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.address.city : "Loading..."}`}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{t("state", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.address.state : "Loading..."}`}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{t("zip", {ns: ['main', 'home']})}</th>
+                            <td>{`${matchingUser ? matchingUser.address.zipcode : "Loading..."}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("filingStatus", {ns: ['main', 'home']})}</th>
-                            <td>{formData.singleOrMarried}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">{t("headOfHousehold", {ns: ['main', 'home']})}</th>
-                            <td>{formData.isHeadofHousehold ? "Yes" : "No"}</td>
+                            <td>{`${matchingUser ? matchingUser.taxInfo.filingStatus : "Loading..."}`}</td>
                         </tr>
                         </tbody>
                     </Table>
@@ -72,27 +120,27 @@ export default function UserPage() {
                         <tbody>
                         <tr>
                             <th scope="row">EIN</th>
-                            <td>{formData.ein}</td>
+                            <td>{`${matchingUser ? matchingUser.taxInfo.w2s.ein : "Loading..."}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("wagesTips", {ns: ['main', 'home']})}</th>
-                            <td>${formData.wagesTips}</td>
+                            <td>${`${matchingUser ? matchingUser.taxInfo.w2s.wagesTips : "Loading..."}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("totalComp", {ns: ['main', 'home']})}</th>
-                            <td>${formData.w2TotalComp}</td>
+                            <td>${`${matchingUser ? matchingUser.taxInfo.w2s.totalComp : "Loading..."}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("ssWithheld", {ns: ['main', 'home']})}</th>
-                            <td>${formData.ssWithheld}</td>
+                            <td>${`${matchingUser ? matchingUser.taxInfo.w2s.ssWithheld : "Loading..."}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("medicareWithheld", {ns: ['main', 'home']})}</th>
-                            <td>${formData.medicareWithheld}</td>
+                            <td>${`${matchingUser ? matchingUser.taxInfo.w2s.medicareWithheld : "Loading..."}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("federalTaxWithheld", {ns: ['main', 'home']})}</th>
-                            <td>${formData.federalTaxWithheld}</td>
+                            <td>${`${matchingUser ? matchingUser.taxInfo.w2s.federalTaxWithheld : "Loading..."}`}</td>
                         </tr>
                         </tbody>
                     </Table>
@@ -117,11 +165,11 @@ export default function UserPage() {
                         <tbody>
                         <tr>
                             <th scope="row">{t("socialSecurityEin", {ns: ['main', 'home']})}</th>
-                            <td>{formData.ssnOrEin}</td>
+                            <td>{`${matchingUser ? matchingUser.taxInfo.form1099.ssnOrEin : "Loading..."}`}</td>
                         </tr>
                         <tr>
                             <th scope="row">{t("totalComp", {ns: ['main', 'home']})}</th>
-                            <td>${formData.ten99TotalComp}</td>
+                            <td>${`${matchingUser ? matchingUser.taxInfo.form1099.totalComp : "Loading..."}`}</td>
                         </tr>
                         </tbody>
                     </Table>
