@@ -44,7 +44,7 @@ export default function FormW2({ goBackToTaxChoice }: FormW2Props) {
                 
                     <Fieldset legend={ "W2 " + t("form", {ns: ['main', 'home']})} legendStyle="large" style={{minWidth: "25vw"}}>
                         <div>
-                            <Label htmlFor="ein">{t("signIn", {ns: ['main', 'home']})}{' '}
+                            <Label htmlFor="ein">EIN{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>

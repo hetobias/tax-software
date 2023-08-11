@@ -79,7 +79,7 @@
     "ssObligation" : "Obligación tributaria restante de la Seguridad Social",
     "medicareObligation" : "Obligación tributaria restante de Medicare",
     "taxObligation" : "Obligación tributaria federal pendiente",
-    "totalTaxReturn" : "Total Tax Return",
+    "totalTaxReturn" : "Total declaración de la renta",
     "backToUser" : "Volver a la página de usuario",
     "totalTaxOwed" : "Impuesto total adeudado"
 }
