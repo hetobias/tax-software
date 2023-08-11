@@ -81,5 +81,6 @@
     "taxObligation" : "Remaining Federal Tax Obligation",
     "totalTaxOwed" : "Total Tax Owed",
     "totalTaxReturn" : "Total Tax Return",
-    "backToUser" : "Go Back to User Page"
+    "backToUser" : "Go Back to User Page",
+    "socialSecurityEin" : "Social Security Number / EIN"
 }

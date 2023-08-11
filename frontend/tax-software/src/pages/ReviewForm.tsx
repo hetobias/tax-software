@@ -315,7 +315,7 @@ export default function ReviewForm() {
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row">Social Security Number / EIN</th>
+                            <th scope="row">{t("socialSecurityEin", {ns: ['main', 'home']})}</th>
                             <td>{formData.ssnOrEin}</td>
                         </tr>
                         <tr>

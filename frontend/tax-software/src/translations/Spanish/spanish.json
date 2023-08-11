@@ -81,5 +81,6 @@
     "taxObligation" : "Obligación tributaria federal pendiente",
     "totalTaxReturn" : "Total declaración de la renta",
     "backToUser" : "Volver a la página de usuario",
-    "totalTaxOwed" : "Impuesto total adeudado"
+    "totalTaxOwed" : "Impuesto total adeudado",
+    "socialSecurityEin" : "Número de la Seguridad Social / EIN"
 }

@@ -35,7 +35,7 @@ export default function Form1099({ goBackToTaxChoice }: FormW2Props) {
                 
                     <Fieldset legend={ "1099 " + t("form", {ns: ['main', 'home']})} legendStyle="large" style={{minWidth: "25vw"}}>
                         <div>
-                            <Label htmlFor="ein">{ "Social Security Number " + t("or", {ns: ['main', 'home']}) + " EIN"}{' '}
+                            <Label htmlFor="ein">{t("socialSecurityEin", {ns: ['main', 'home']})}{' '}
                             <abbr title="required" className="usa-hint usa-hint--required">
                             *
                             </abbr></Label>
